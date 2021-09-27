@@ -1,0 +1,27 @@
+Team F2: Jing Yi Feng, Sophia Eiden
+
+0. What does "base-x number system" mean?
+
+"Base" in base x is the number of unique digits used in a number system to reperesnet values. It does not change value, but is merely a different expression of it.
+
+1.What is binary, and why do we care?
+
+Binary is a base-2 number system comprised of 1s and 0s. We care about binary because it is the simplest language that the computer can understand, and we build out all other computer languages through it.
+
+2. Binary --> Decimal
+
+a). For each instance of a 1, find the position it is from the left, or n .
+b). Then compute 2^(n-1). Remember this value.
+c) Repeat steps a and b until there are no more digits to work with.
+d) Add all the values together. Voila!
+
+EX: 1001, the first 1 is in position 4, the last 1 is in position 1.
+2^(4-1) = 8, 2^(1-1) = 1
+8+1 = 9
+
+3. Decimal --> Binary
+
+a). For a number x, find the largest power of 2 that is smaller than x.
+b). Find the exponent of that power, which will be referred to as n.
+c). Place a 1 in the (n+1)th position from the right. * Assume all other positions have a 0 from the beginning.
+d). Subtract the power from x, and repeat steps a-c for the resultant value until the resultant value is 0.
