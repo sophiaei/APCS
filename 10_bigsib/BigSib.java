@@ -11,6 +11,6 @@ UNRESOLVED QUESTIONS
 
 public class BigSib {
   public static String greet(String name){
-    return("Good day, " + name+". Fare you well?");
+    return("Why hello there,  " + name+". How do you do?");
   }
 }
