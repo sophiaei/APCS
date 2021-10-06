@@ -1,8 +1,7 @@
 public class BigSib {
-  String helloMsg;
+  static String helloMsg;
 
   public static String greet(String name){
-
     return(helloMsg + " " + name);
   }
 
