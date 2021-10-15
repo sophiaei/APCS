@@ -1,21 +1,20 @@
-//Team "AwesomeName": Sophia Eiden, William Vongpurithan
+//Team "AwesomeName": Sophia Eiden, William Vongphanith
 //APCS
 //HW 18 - method implementation in practical function
 //10-13-21
 
 
 class Bankaccount {
-
 	// Notes:
 		/*
 		 * I don't think you can change your account number, so there's no method for that.
 		 * The constructor generates a random 9-digit account number for you.
 		 * Implemented proper security protocol. All information is private. So you can't set it without using proper methods.
-		 * Implemented print function because I'm simply not going to type System.out.println every time. 
+		 * Implemented print function because I'm simply not going to type System.out.println every time.
 		*/
 	private String acct_name;
 	private String acct_password;
-	private int acct_pin; 
+	private int acct_pin;
 	private int acct_number;
 	private double acct_balance;
 
