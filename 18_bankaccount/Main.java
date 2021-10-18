@@ -1,102 +1,61 @@
+
 //Team "AwesomeName": Sophia Eiden, William Vongphanith
 //APCS
 //HW 18 - method implementation in practical function
 //10-13-21
+/*
+DISCO
+	- Private variables cannot be accessed outside of their class. You must access them through a method within the class.
+	- If variables were public, you could access them from outside their class( i.e. as acct.accountName).
+	- The assignment taught us to apply the concepts we learned in the pre-work and in class recently into a useful? class.
+QCC
+	- if an instance variable is private, but the method accessing the variable is public can u call the method from another class and access the variable?
+		- and how semantic is the difference?
+	- How do you truncate decimals so it displays in cents (i.e. $192.57 instead of 192.5728491923 or $928.50 instead of $928.5)?
+
+	Q2: How do you know BEFORE you wrote your own constructor,
+	that Java provides one for you?
+			We know that java provides us with a constructor because variables can be called without us initializing them ourselves - it is initalized as null, but initalized nonetheless
 
 
-class Bankaccount {
-	// Notes:
-		/*
-		 * I don't think you can change your account number, so there's no method for that.
-		 * The constructor generates a random 9-digit account number for you.
-		 * Implemented proper security protocol. All information is private. So you can't set it without using proper methods.
-		 * Implemented print function because I'm simply not going to type System.out.println every time.
-		*/
-	private String acct_name;
-	private String acct_password;
-	private int acct_pin;
-	private int acct_number;
-	private double acct_balance;
 
-	public void print (String text) {
-		System.out.println(text);
-	}
+	Q3: Describe a test to determine whether Java provides a
+	mean of outputting a STRING REPRESENTATION of an OBJECT.
 
-	public Bankaccount (String name, String password, int pin) {
-		acct_name = name;
-		acct_password = password;
-		acct_pin = pin;
-		acct_number = Utils.random_acct_number();
-		acct_balance = 0;
-	}
+		Rather simply, one can run the method System.out.println(<<object_name>>). When I ran that on this code, it presented an error saying that the object could not be converted into a string. And lo, there is the answer. Of course, coding a representation would be simple, but perhaps outside of the bounds of the question.
+*/
 
-	public void set_account_name (String password, String name) {
-		if (password != acct_password) {
-			print("Invalid password.");
-		}
-		else {
-			acct_name = name;
-		}
-	}
+class Main {
+	public static void main(String[] args) {
+		// I started a checking account.
+		Bankaccount acct = new Bankaccount("ThunderRedStar", "SecurePassword123", 1234);
 
-	public void set_account_password (String old_password, String new_password) {
-		if (old_password != acct_password) {
-			print("Invalid password.");
-		}
-		else {
-			acct_password = new_password;
-		}
-	}
+		// I deposited some money and used it as normal.
+		acct.get_balance(1234);
+		acct.deposit(1234, 5000);
+		acct.get_balance(1234);
+		acct.withdraw(1234, 1000);
+		acct.get_balance(1234);
 
-	public void set_account_pin (String password, int pin) {
-		if (password != acct_password) {
-			print("Invalid password.");
-		}
-		else {
-			acct_pin = pin;
-		}
-	}
+		// Oh no, some random hacker stole my account number and wants to steal my money! And he is trying to steal my data too!
+		acct.withdraw(5678, 4000);
+		acct.print_info("WrongPassword123");
+		acct.set_account_password("WrongPassword123", "InsecurePassword123");
 
-	public void print_info (String password) {
-		if (password != acct_password) {
-			print("Invalid password.");
-		}
-		else {
-			print("===== BEGIN ACCOUNT INFO =====");
-			print("Account Number: " + acct_number);
-			print("Account Name: " + acct_name);
-			print("Account Password: " + "*".repeat(acct_password.length()));
-			print("Account PIN: " + "****");
-			print("=====  END ACCOUNT INFO  =====");
-		}
-	}
+		// Thank god for my pin and password! And these methods!
+		acct.set_account_password("SecurePassword123", "MoreSecurePassword123!?");
 
-	public void get_balance (int pin) {
-		if (pin == acct_pin) {
-			print("Your balance is: $" + acct_balance);
-		}
-		else {
-			print("Invalid PIN.");
-		}
-	}
+		// As you can see here, the password change takes effect.
+		acct.set_account_pin("SecurePassword123", 9876);
 
-	public void deposit (int pin, double amount) {
-		if (pin == acct_pin) {
-			acct_balance += amount;
-			print("You have deposited $" + amount + ".");
-		}
-		else {
-			print("Invalid PIN.");
-		}
-	}
+		// Actual PIN change.
+		acct.set_account_pin("MoreSecurePassword123!?", 9876);
 
-	public void withdraw (int pin, double amount) {
-		if (pin == acct_pin) {
-			acct_balance -= amount;
-			print("You have withdrawn $" + amount + ".");
-		}
-		else {
-			print("Invalid PIN.");
-		}
+		// More "normal" account usage
+		acct.deposit(9876, 6000);
+		acct.get_balance(9876);
+		acct.print_info("MoreSecurePassword123!?");
+
+		acct.print(acct);
 	}
 }
