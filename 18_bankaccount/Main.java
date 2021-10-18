@@ -22,7 +22,7 @@ QCC
 	Q3: Describe a test to determine whether Java provides a
 	mean of outputting a STRING REPRESENTATION of an OBJECT.
 
-		Rather simply, one can run the method System.out.println(<<object_name>>). When I ran that on this code, it presented an error saying that the object could not be converted into a string. And lo, there is the answer. Of course, coding a representation would be simple, but perhaps outside of the bounds of the question.
+		Rather simply, one can run the method System.out.println(<<object_name>>.toString()). When I ran that on this code, it presented this: Bankaccount@4fccd51b. So yes, it does present a string representation of the object, but not one that is readily intelligible. 
 */
 
 class Main {
@@ -56,6 +56,8 @@ class Main {
 		acct.get_balance(9876);
 		acct.print_info("MoreSecurePassword123!?");
 
-		acct.print(acct);
+		acct.print(acct.toString());
+
+
 	}
 }
