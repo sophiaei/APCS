@@ -14,10 +14,10 @@ QCC
 	- How do you truncate decimals so it displays in cents (i.e. $192.57 instead of 192.5728491923 or $928.50 instead of $928.5)?
 
 Q2: How do you know BEFORE you wrote your own constructor, that Java provides one for you?
-		We know that java provides us with a constructor because variables can be called without us initializing them ourselves - it is initalized as null, but initalized nonetheless
+	We know that java provides us with a constructor because variables can be called without us initializing them ourselves - it is initalized as null, but initalized nonetheless
 
 Q3: Describe a test to determine whether Java provides a mean of outputting a STRING REPRESENTATION of an OBJECT.
-		Rather simply, one can run the method System.out.println(<<object_name>>.toString()). When I ran that on this code, it presented this: Bankaccount@4fccd51b. So yes, it does present a string representation of the object, but not one that is readily intelligible.
+	Rather simply, one can run the method System.out.println(<<object_name>>.toString()). When I ran that on this code, it presented this: Bankaccount@4fccd51b. So yes, it does present a string representation of the object, but not one that is readily intelligible.
 */
 
 class Main {
