@@ -38,7 +38,7 @@ public class Bankaccount {
 		return oldPasswd;
 	}
 
-	/* Begin edits made to provided code */
+	/* edited code*/
 	public short setPin(short newPin) {
 		short oldPin = pin;
 
@@ -63,7 +63,7 @@ public class Bankaccount {
 			return oldAcctNum;
 		}
 	}
-	/* End edits made to provided code */
+	/* edits end*/
 
 	public double setBalance(double newBalance) {
 		double oldBalance = balance;
@@ -76,7 +76,7 @@ public class Bankaccount {
 		balance = balance + depositAmount;
 	}
 
-  /* edits made*/
+  /* edited code*/
 
 	public Boolean withdraw(double withdrawAmount) {
     if (withdrawAmount > balance){
@@ -103,10 +103,9 @@ public class Bankaccount {
 		return retStr;
 	}
 
-	/* Begin edits to provided code */
+	/* edited code */
 
 	// Notice that we overloaded the function to take either a pin or a password. It's good that the pin and the password use different data types.
-
 	// The following function(s) should really be private, but are public for the testing purposes.
 	public boolean checkAuth (short userPin) {
 		if (userPin != pin) {
@@ -125,9 +124,8 @@ public class Bankaccount {
 			return true;
 		}
 	}
+	/* edits end */
 
-
-	/* End edits to provided code */
 	// main method for testing
 	public static void main(String[] args) {
 		// I started a checking account.
