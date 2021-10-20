@@ -1,3 +1,5 @@
+//TNPG: AwesomeName
+
 /*
  *	{
  *		"teamName": "AwesomeName",
@@ -12,6 +14,15 @@
  *		},
  *		"effort": 125,
  *		"discoveries": [
+ *			" --> We discovered that Java is significantly slower than we thought when creating 
+ *			objects, creating hundreds of millions of objects when it could process billions of
+ *			calculations a second. We theorize that this could be because creating objects and 
+ *			writing them to random-access memory takes longer than simply making a calculation 
+ *			(125 μs to store 1MB of memory vs mere nanoseconds per calculation)", 
+ *			" --> We expected to be able to exploit private v. public discrepancies to hack, but 
+ *			for the most part, they made their attributes private, so stress testing was all the 
+ *			hacking we could do", 
+=======
  *			" --> We discovered that Java is significantly slower than we thought when creating
  *			objects, creating hundreds of millions of objects when it could process billions of
  *			calculations a second. We theorize that this could be because creating objects and
@@ -24,13 +35,13 @@
  *			calls to usable limits. Doesn't mean we can't use loops!."
  *		],
  *		"qcc": [
- *			" --> We thought that authenticate should be a private method that other functions
+
+ *			" --> We thought that authenticate should be a private method that other functions 
  *			could use."
  *		]
  *	}
- *
+ *	
  */
-
 
 public class Teller{
 	public static void main(String[] args){
