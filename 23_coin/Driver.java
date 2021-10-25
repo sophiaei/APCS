@@ -1,3 +1,18 @@
+/*
+Team SN(Snooty Snickers): Nada Hameed, Sophia Eiden
+APCS
+HW23: What does equality look like?
+2021-10-24
+time spent: 37 mins (utilitarian methods completed in 30 minutes (exactly!)
+
+DISCO:
+ - objects can communicate directly to other objects via obj.var/method.
+ - fun probability stuff with flip()! how to put biases into the flip.
+QCC:
+ - why does bias need to be a variable and not hardcoded if we are not going to manipulate it?
+
+*/
+
 /***
     driver for class Coin
     ~~~ SUGGESTED WORKFLOW: ~~~
@@ -16,36 +31,36 @@ public class Driver {
 
     //build Objects from blueprint specified by class Coin
 
-
     //test default constructor
-
       Coin mine = new Coin();
-          
       //test 1st overloaded constructor
-      Coin yours = new Coin( "quarter" );
-      
+      Coin yours = new Coin("quarter");
+
       //test 2nd overloaded constructor
-      Coin wayne = new Coin( "dollar", "heads" );
-      /*===================TOP==========================
+      Coin wayne = new Coin("dollar", "heads" );
+
       //test toString() methods of each Coin
       System.out.println("mine: " + mine);
       System.out.println("yours: " + yours);
       System.out.println("wayne: " + wayne);
+
       //test flip() method
       System.out.println("\nAfter flipping...");
       yours.flip();
       wayne.flip();
+
       System.out.println("yours: " + yours);
       System.out.println("wayne: " + wayne);
+
       //test equals() method
-      if ( yours.equals(wayne) ) {
+      if (yours.equals(wayne) ) {
         System.out.println( "Matchee matchee!" );
       }
       else {
         System.out.println( "No match. Firestarter you can not be." );
       }
+      /*===================TOP==========================
       ====================BOTTOM======================*/
 
   }//end main()
-
 }//end class
