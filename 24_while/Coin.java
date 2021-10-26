@@ -1,15 +1,19 @@
 /*
 Team SN(Snooty Snickers): Nada Hameed, Sophia Eiden
 APCS
-HW23: What does equality look like?
-2021-10-24
-time spent: 37 mins (utilitarian methods completed in 30 minutes (exactly!)
+HW24: Get It While You Can - while loops
+2021-10-25
+time spent: 40 mins
 
 DISCO:
- - objects can communicate directly to other objects via obj.var/method.
- - fun probability stuff with flip()! how to put biases into the flip.
+
 QCC:
- - why does bias need to be a variable and not hardcoded if we are not going to manipulate it?
+- refreshed while loop notation, lots more practice w/ booleans. did tons of experiments!
+- we used OR statements instead of ANDs, since we couldn't figure out the syntax for all of the bullets to be true with AND statements
+
+POST-v0 MODS:
+- refactored reset to more closely align w/ given solution in the interest of mutual intelligibility with other groups
+- nixed a pesky print statement.
 */
 
 /***
@@ -130,7 +134,11 @@ public class Coin {
   ***/
   public void reset( String s, double d ) {
     value = 0;
-  	upFace = "heads";
+  	upFace = s;
+  	flipCtr = 0;
+  	tailsCtr = 0;
+  	headsCtr = 0;
+  	bias = d;
   }
 
   /***
@@ -146,8 +154,7 @@ public class Coin {
   public String flip() {
     flipCtr ++ ;
     double probability = Math.random();
-    //System.out.println(probability);
-    if (probability < 0.5){
+    if (probability < bias){
       upFace = "heads";
       headsCtr ++;
     }

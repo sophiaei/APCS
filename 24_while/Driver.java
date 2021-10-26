@@ -1,14 +1,19 @@
 /*
 Team SN(Snooty Snickers): Nada Hameed, Sophia Eiden
 APCS
-HW23: What does equality look like?
-2021-10-24
-time spent: 37 mins (utilitarian methods completed in 30 minutes (exactly!)
+HW24: Get It While You Can - while loops
+2021-10-25
+time spent: 40 mins
+
 DISCO:
- - objects can communicate directly to other objects via obj.var/method.
- - fun probability stuff with flip()! how to put biases into the flip.
+
 QCC:
- - why does bias need to be a variable and not hardcoded if we are not going to manipulate it?
+- refreshed while loop notation, lots more practice w/ booleans. did tons of experiments!
+- we used OR statements instead of ANDs, since we couldn't figure out the syntax for all of the bullets to be true with AND statements
+
+POST-v0 MODS:
+- refactored reset to more closely align w/ given solution in the interest of mutual intelligibility with other groups
+- nixed a pesky print statement.
 */
 
 /***
@@ -57,6 +62,20 @@ public class Driver {
       else {
         System.out.println( "No match. Firestarter you can not be." );
       }
+
+      int matchCtr = 0;
+      int x = 10;
+      int y = 15;
+      while (((yours.headsCtr + wayne.headsCtr) < x) || (matchCtr < y) || (matchCtr < 65536) || ((matchCtr % 2005) == 0)){
+        yours.flip();
+        wayne.flip();
+        if (yours.equals(wayne) ) {
+          matchCtr ++;
+        }
+        else{continue;}
+      }
+      System.out.println("matches - " + matchCtr + "\nheads in total (both objects) - "+ (yours.headsCtr + wayne.headsCtr) + "\ntails in total - " + (yours.tailsCtr + wayne.tailsCtr));
+
       /*===================TOP==========================
       ====================BOTTOM======================*/
 
