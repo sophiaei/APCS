@@ -39,8 +39,6 @@ public class Commafier{
       return commafyR(Integer.parseInt(s.substring(0,s.length()-3))) + "," + s.substring(s.length()-3);
     }
 
-
-
     // commafyR(Integer.parseInt(nStr.substring(0, strLen-3))) + "," + nStr.substring(strLen -3);
   }
 
