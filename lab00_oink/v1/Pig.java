@@ -25,7 +25,7 @@
 
 public class Pig {
 
-  private static final String VOWELS = "aeiou";
+  private static final String VOWELSy = "aeiouy";
   private static final String VOWELS = "aeiou"; // need to add a y case aspect to cd
   private static final String CAPS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   private static final String PUNCS = ".,:;!?";
@@ -163,8 +163,8 @@ public class Pig {
 
     if ( beginsWithVowel(w) )
       ans = w + "way";
-
     else {
+      if (hasAVowel(w))
       int vPos = w.indexOf( firstVowel(w) );
       ans = w.substring(vPos) + w.substring(0,vPos) + "ay";
     }
@@ -334,49 +334,6 @@ public class Pig {
   public static boolean beginsWithVowel( String w ) {
     return isAVowel( w.substring(0,1) );
   }
-
-
-  /**
-    String engToPig(String) -- converts an English word to Pig Latin
-    pre:  w.length() > 0
-    post: engToPig("apple")  --> "appleway"
-    engToPig("strong") --> "ongstray"
-    engToPig("java")   --> "avajay"
-    **/
-  public static String engToPig( String w ) {
-
-    String ans = "";
-
-    if ( beginsWithVowel(w) )
-      ans = w + "way";
-
-    else {
-      int vPos = w.indexOf( firstVowel(w) );
-      ans = w.substring(vPos) + w.substring(0,vPos) + "ay";
-    }
-
-    return ans;
-  }
-
-
-  public static void main( String[] args ) {
-
-    for( String word : args ) {
-      System.out.println( "allVowels \t" + allVowels(word) );
-      System.out.println( "firstVowels \t" + firstVowel(word) );
-      System.out.println( "countVowels \t" + countVowels(word) );
-      System.out.println( "engToPig \t" + engToPig(word) );
-      System.out.println( "---------------------" );
-    }
-
-  }//end main()
-
-}//end class Pig
-lean hasA(String,String) -- checks for a letter in a String
-    pre:  w != null, letter.length() == 1
-    post: hasA("cat", "a") -> true
-    hasA("cat", "p") -> false
-  **/
   public static boolean hasA( String w, String letter ) {
 
     return w.indexOf(letter) != -1;
@@ -522,8 +479,6 @@ lean hasA(String,String) -- checks for a letter in a String
      return isUpperCase(w.substring(0,1) );
    }
 
-
-
   /**
     String engToPig(String) -- converts an English word to Pig Latin
     pre:  w.length() > 0
@@ -534,6 +489,17 @@ lean hasA(String,String) -- checks for a letter in a String
   public static String engToPig( String w ) {
 
     String ans = "";
+
+    if (!hasAVowel(w)){
+      if ( beginsWithVowel(w) )
+        ans = w + "way";
+
+      else {
+        int vPos = w.indexOf( firstVowel(w) );
+        ans = w.substring(vPos) + w.substring(0,vPos) + "ay";
+      }
+      }
+    }
 
     if ( beginsWithVowel(w) )
       ans = w + "way";
@@ -558,5 +524,3 @@ lean hasA(String,String) -- checks for a letter in a String
     }
 
   }//end main()
-
-}//end class Pig
