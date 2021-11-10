@@ -189,5 +189,3 @@ public class Pig {
       System.out.println( "---------------------" );
     }
   }//end main()
-
-}//end class Pig
