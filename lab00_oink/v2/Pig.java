@@ -4,7 +4,7 @@
  * L00: Etterbay Odingcay Oughthray Ollaborationcay
  * 2021-11-09
 
- NEW IN v3: For engToPig, we took in punctuation into account.
+ NEW IN v2: For engToPig, we took capitatlization into account.
 
  * class Pig
  * a Pig Latin translator
@@ -171,16 +171,6 @@ public class Pig {
     **/
   public static String engToPig(String w){
     String ans = "";
-    String firstPunc = "";
-    String lastPunc = "";
-    if (isPunc(w.substring(0, 1))){
-      firstPunc = w.substring(0, 1);
-      w = w.substring(1);
-    }
-    if (isPunc(w.substring(w.length() - 1))){
-      lastPunc = w.substring(w.length() - 1);
-      w = w.substring(0, w.length() - 1);
-    }
     int vPos = w.indexOf(firstVowel(w));
     if (beginsWithUpper(w)){
       if (beginsWithVowel(w)){
@@ -199,17 +189,16 @@ public class Pig {
         ans = w.substring(vPos) + w.substring(0, vPos) + "ay";
       }
     }
-    return firstPunc + ans + lastPunc;
+    return ans;
   }
 
   public static void main(String[] args){
     for (String word : args){
-      //System.out.println("allVowels \t" + allVowels(word));
-      //System.out.println( "firstVowels \t" + firstVowel(word) );
-      //System.out.println( "countVowels \t" + countVowels(word) );
-      //System.out.println( "engToPig \t" + engToPig(word) );
-      System.out.print(engToPig(word) + " ");
-      //System.out.println( "---------------------" );
+      System.out.println("allVowels \t" + allVowels(word));
+      System.out.println( "firstVowels \t" + firstVowel(word) );
+      System.out.println( "countVowels \t" + countVowels(word) );
+      System.out.println( "engToPig \t" + engToPig(word) );
+      System.out.println( "---------------------" );
     }
   }//end main()
 

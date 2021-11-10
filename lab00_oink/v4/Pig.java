@@ -4,7 +4,15 @@
  * L00: Etterbay Odingcay Oughthray Ollaborationcay
  * 2021-11-09
 
- NEW IN v3: For engToPig, we took in punctuation into account.
+DISCO:
+
+QCC:
+
+HOW WE UTILIZED SCANNER DEMO:
+
+WHAT CAUSES THE RUNTIME ERROR IN THE SCANNER:
+
+NEW IN v4: Trying to incorporate Scanner in this version.
 
  * class Pig
  * a Pig Latin translator
@@ -22,6 +30,8 @@
  *      then develop and test one method at a time.
  *      NEVER STRAY TOO FAR FROM COMPILABILITY/RUNNABILITY!
  ***/
+
+import java.util.Scanner;
 
 public class Pig {
 
@@ -204,13 +214,17 @@ public class Pig {
 
   public static void main(String[] args){
     for (String word : args){
-      //System.out.println("allVowels \t" + allVowels(word));
-      //System.out.println( "firstVowels \t" + firstVowel(word) );
-      //System.out.println( "countVowels \t" + countVowels(word) );
-      //System.out.println( "engToPig \t" + engToPig(word) );
-      System.out.print(engToPig(word) + " ");
-      //System.out.println( "---------------------" );
+      System.out.println("allVowels \t" + allVowels(word));
+      System.out.println( "firstVowels \t" + firstVowel(word) );
+      System.out.println( "countVowels \t" + countVowels(word) );
+      System.out.println( "engToPig \t" + engToPig(word) );
+      System.out.println( "---------------------" );
     }
+
+    Scanner sc = new Scanner( System.in );
+    while( sc.hasNext() ) {
+      System.out.println( sc.next() );
+      System.out.println( sc.next() );
   }//end main()
 
 }//end class Pig
