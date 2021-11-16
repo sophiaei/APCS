@@ -11,6 +11,12 @@ DISCO:
 0. To print an array (in string version) we can use Array.toString
 1. To get the length of an array we can use .length (no parentheses)
 2. Arrays package provides a default toString for arrays.
+3. In our recursive Linear Search we originally had two calls of the linear search on aNext.
+   It took us a while, but we realized that this exponentiated the number of computations required 
+   from contant * 1^(index of target) to constant * 2^(index of target) computations,
+   which is a VERY significant difference for large index of targets.
+   The fix was just to set a variable equal to the function call and use that variable
+   instead of forcing the machine to repeat computations. 
 QCC:
 0. Why does .length work for arrays when it is a string method
 1. Why doesn't .length require parentheses?
