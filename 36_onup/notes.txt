@@ -1,0 +1,18 @@
+~~~~~~~~~~~~~~~~Appendix D: Debugging~~~~~~~~~~~~~~~~
+ - compile-time error : something syntactically wrong
+ - run-time error : error while running (i.e. StackOverflowError)
+ - logic error: program doesnt do what we want
+
+D.2: runtime errors
+ - infinite recursion: make sure it hits a base case (qcc: can there be more than one base case? ig not?)
+
+print statement debugging : only use as is useful
+
+D.3: logic errors
+ - what is not happening that should?
+ - what is happening that shouldnt?
+ - what is happening that is unexpected?
+
+LEAVE THE COMPUTER! bus, shower, bed good locations
+
+All else fails --> ask for help / rubber duck debug
