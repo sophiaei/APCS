@@ -13,7 +13,7 @@
  * DISCO:
  *
  * QCC:
- *
+ * 0. Lossy conversion from double to float???
  **********************************************/
 
 import java.io.*;
@@ -32,7 +32,7 @@ public class YoRPG {
 
   private int moveCount;
   private boolean gameOver;
-  private int difficulty;
+  private int difficulty; //doesn't need to be int since (int / float) will result in float
 
   private InputStreamReader isr;
   private BufferedReader in;
@@ -105,7 +105,7 @@ public class YoRPG {
     else {
 	    System.out.println( "\nLo, yonder monster approacheth!" );
 
-	    smaug = new Monster();
+	    smaug = new Monster( difficulty );
 
 	    while( smaug.isAlive() && pat.isAlive() ) {
 
@@ -127,11 +127,17 @@ public class YoRPG {
         d1 = pat.attack( smaug );
         d2 = smaug.attack( pat );
 
+        pat.normalize(); //reset damage/atk values
+
         System.out.println( "\n" + pat.getName() + " dealt " + d1 +
                             " points of damage.");
 
         System.out.println( "\n" + "Ye Olde Monster smacked " + pat.getName() +
                             " for " + d2 + " points of damage.");
+
+        System.out.println( "\nAll that stands between you and death is " + pat.getHealth() +
+                            " ounces of strength"
+                            + "\n" + "Smaug inches towards death. Only " + smaug.getHealth() + " inches left!!");
 	    }//end while
 
 	    //option 1: you & the monster perish
@@ -163,20 +169,21 @@ public class YoRPG {
     //As usual, move the begin-comment bar down as you progressively
     //test each new bit of functionality...
 
-    /*================================================
     //loading...
     YoRPG game = new YoRPG();
 
     int encounters = 0;
 
     while( encounters < MAX_ENCOUNTERS ) {
-    if ( !game.playTurn() )
-    break;
+    if ( !game.playTurn() ) {
+      break;  //smh my head so lazy
+    }
     encounters++;
     System.out.println();
     }
 
     System.out.println( "Thy game doth be over." );
+    /*================================================
 	  ================================================*/
   }//end main
 
