@@ -1,37 +1,25 @@
-// Clyde "Thluffy" Sinclair
-// APCS pd0
-// HW47 -- ?
-// 2021-12-15w
-// time spent: _ hrs
+// Strawberry JAM: Sophia Eiden, Melody Lew, Josiah Moltz
+// APCS pd6
+// HW47 -- Guess Again / "Binary" Search algorithm dictated by user / User guesses a number, and computer updates search window
+// 2021-12-15
+// time spent: .5 hrs
 
 /***
- * class GuessNumber -- fun fun fun!
- *
- * SKELETON
- *
- * eg, sample interaction with end user:
- *
- * Guess a # fr 1-100: 50
- * Too high
- * Guess a # fr 1-49: 25
- * Too low
- * Guess a # fr 26-49: 38
- * Correct! It took 3 guesses
- ***/
 
-/***
 Q0: How many guesses will the most unlucky player need?
-  100 :)
+  100
 Q1: How many guesses will the savviest player need?
   7
 Q2: What is the savviest guess?
   50
 
+QCC
+0. (b-a+1) * Math.random() + a always ensures that the target is within the range.
 
-    DISCO:
-
-    QCC:
-
+DISCO
+0. If the guess is out of bounds,
+   the program says that the guess is too low/high
+   regardless of the fact that we did not have a conditional that explicitly stated to do this
  ***/
 import java.util.Scanner;
 
@@ -111,11 +99,11 @@ public class GuessNumber
       }
       else if (guess > _target){
         System.out.println("too high :(");
-        _hi = guess;
+        _hi = guess-1;
       }
       else {
         System.out.println("too low :(");
-        _lo = guess;
+        _lo = guess+1;
       }
 
       _guessCtr++;
