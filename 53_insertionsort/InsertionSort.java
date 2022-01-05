@@ -16,6 +16,7 @@
  *
  * DISCO
  * KTS is very necessary when coming up with an algorithm.
+ * (out of school) Big O notation - insertion sort has a O(n^2) - visualization for time complexity 
  *
  * QCC
  * q0: How many passes to sort n elements?
