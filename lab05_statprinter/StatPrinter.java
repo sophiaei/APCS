@@ -64,21 +64,29 @@ public class StatPrinter
   //          _frequency.get(i) returns frequency of i in data
   //eg, for data [2,3,2,5,2,3]
   //  _frequency would be [0,0,3,2,0,1]
+
+  // Time Complexity: O(n)
+  // Iterates through collection twice (O(2n) simplified to O(n))
   public StatPrinter( ArrayList <Integer> data )
   {
-    _frequency = new ArrayList<Integer>(max(data)+1);
+    _frequency = new ArrayList<Integer>();
 
-    for (int i = 0; i < max(data); i++){
-      int val =  (_frequency.get(i));
-      _frequency.set(i,val++);
+    for (int i = 0; i <= max(data); i++){
+      _frequency.add(0);
     }
-    /* YOUR IMPLEMENTATION HERE */
+
+    for (Integer i : data) {
+        _frequency.set(i, _frequency.get(i) + 1);
+    }
   }
 
 
   //*************** QUESTION 01 **************************
   //precond:  data.size() > 0
   //postcond: returns largest integer in data
+
+  // Time Complexity: O(n)
+  // One for-loop that iterates through entire collection
   public Integer max( ArrayList <Integer> data )
   {
     int max = data.get(0);
@@ -88,9 +96,8 @@ public class StatPrinter
       }
     }
     return max;
-    /* YOUR IMPLEMENTATION HERE */
   }
-/*
+
 
   //*************** QUESTION 03 **************************
   //postcond: returns true if i > 0 and i < _frequency.size() - 1
@@ -102,27 +109,50 @@ public class StatPrinter
   //    isLocalMode(0) -> false
   //    isLocalMode(1) -> true
   //    isLocalMode(5) -> true
+
+  // Time Complexity: O(1)
+  // Automatically goes to index in _frequency and performs boolean comparisons
   public boolean isLocalMode( int i )
   {
-    /* YOUR IMPLEMENTATION HERE */
-//  }
+    return (i > 0 && i < _frequency.size() - 1 && _frequency.get(i - 1) < _frequency.get(i) && _frequency.get(i + 1) < _frequency.get(i));
+  }
 
-/*
   //*************** QUESTION 04 **************************
   //postcond: returns list of modes in _frequency
+
+  // Time Complexity: O(n)
+  // Iterates through entire collection looking for possible modes
   public ArrayList<Integer> getLocalModes()
   {
-    /* YOUR IMPLEMENTATION HERE */
+    ArrayList<Integer> _modes = new ArrayList<Integer>();
 
-//  }
+    for (Integer i : _frequency) {
+        if (isLocalMode(i)) {
+            _modes.add(i);
+        }
+    }
+    return _modes;
+  }
 
-/*
+
 
   //*************** QUESTION 05 **************************
   //precond:  longestBar > 0
+
+  // Time Complexity: O(n^2)
+
+  // Iterates through frequency array for headers of each line in histogram
+  // Then iterates through the number in the frequency array to create star string
   public void printHistogram( int longestBar )
   {
-    /* YOUR IMPLEMENTATION HERE */
-//  }
+    double ratio = longestBar / (float) max(_frequency);
+    for (int i = 0; i < _frequency.size(); i++) {
+        String stars = "";
+        for (int ii = 1; ii <= _frequency.get(i) * ratio; ii++) {
+            stars += "*";
+        }
+        System.out.println(i + " : " + stars);
+    }
+  }
 
 }//end class StatPrinter
