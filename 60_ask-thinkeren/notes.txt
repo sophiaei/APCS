@@ -1,0 +1,7 @@
+- was very confused re: the actual rules of looking or not looking at the cards
+
+THINKER FIRMWEAR
+- when given cards, split into two decks and pass to 2 other people.
+  - do not take any more cards except for those originally given to you
+- when 2 sorted decks return to you, merge sort them and give to the person
+ who gave them to you.
