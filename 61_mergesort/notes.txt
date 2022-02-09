@@ -1,4 +1,4 @@
-Submarine Cable History (Sophia Eiden, Jing Yi Feng, David Deng)
+Submarine Cable History (Sophia Eiden, David Deng)
 APCS pd6
 HW60 -- A Termite is-a Turtle, a Thinker is-a Turtle / Observing an Algo
 2022-02-07m
