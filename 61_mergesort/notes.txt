@@ -1,0 +1,16 @@
+Submarine Cable History (Sophia Eiden, Jing Yi Feng, David Deng)
+APCS pd6
+HW60 -- A Termite is-a Turtle, a Thinker is-a Turtle / Observing an Algo
+2022-02-07m
+Time spent: 0.25 hrs
+
+DISCO:
+- Outsourcing can help solve possible problems faster. Essentially divides the work amongst multiple persons.
+- If you don't know the current status of the deck, simplify it.
+- Build incrementally(?) from basic sorted deck (1 card) until sorted deck.
+
+QCC:
+
+THINKER FIRMWARE
+- GIVE: During original distribution, if cards > 1, half and give both resulting decks to two others. Else, give card to person where you got it from.
+- TAKE: If hands == empty or if originally distributed set of halved cards.

@@ -1,3 +1,8 @@
+// Submarine Cable (Sophia Eiden, David Deng)
+// APCS pd6
+// HW61 -- Instructions so Simple...
+// 2022-02-08t
+
 /***
   class MergeSort
   Implements mergesort on array of ints.
@@ -17,20 +22,29 @@ public class MergeSort
    ******************************************************/
   private static int[] merge( int[] a, int[] b )
   {
+
     int[] final_array = new int[a.length + b.length];
 
     int idA = 0;
     int idB = 0;
 
-    while (idA < a.length-1 || idB < b.length-1){
-      if (a[idA] < b[idB]){
-        final_array[idA+idB] = a[idA];
+    while (idA < a.length && idB < b.length) {
+        if (a[idA] < b[idB]) {
+            final_array[idA + idB] = a[idA];
+            idA += 1;
+        }
+        else {
+            final_array[idA + idB] = b[idB];
+            idB += 1;
+        }
+    }
+    while (idA < a.length) {
+        final_array[idA + idB] = a[idA];
         idA += 1;
-      }
-      else {
-        final_array[idA+idB] = b[idB];
+    }
+    while (idB < b.length) {
+        final_array[idA + idB] = b[idB];
         idB += 1;
-      }
     }
 
     return final_array;
@@ -42,14 +56,27 @@ public class MergeSort
    * Sorts input array using mergesort algorithm
    * Returns sorted version of input array (ascending)
    ******************************************************/
-/*
+
   public static int[] sort( int[] arr )
   {
+    if (arr.length == 1) {
+        return arr;
+    }
+    int medium = arr.length / 2;
+    int[] arr1 = new int[medium];
+    int[] arr2 = new int[arr.length - medium];
 
+    for (int i = 0; i < medium; i++) {
+      arr1[i] = arr[i];
+    }
 
+    for (int i = medium; i < arr.length; i++) {
+      arr2[i - medium] = arr[i];
+    }
 
+    return merge(sort(arr1), sort(arr2));
   }//end sort()
-*/
+
 
 
   //-------------------HELPERS-------------------------
@@ -74,8 +101,8 @@ public class MergeSort
   public static void main( String [] args )
   {
 
-      int[] arr0 = {0};
-      int[] arr1 = {1};
+      int[] arr0 = {0}; //B
+      int[] arr1 = {1}; //A
       int[] arr2 = {1,2};
       int[] arr3 = {3,4};
       int[] arr4 = {1,2,3,4};
@@ -93,12 +120,13 @@ public class MergeSort
 
       System.out.println("\nMerging arr4 and arr6: ");
       printArray( merge(arr4,arr6) );
-  /*~~~~~~~~~~~~~~ Ye Olde Tester Bar ~~~~~~~~~~~~~~
+
       System.out.println("\nSorting arr4-7...");
       printArray( sort( arr4 ) );
       printArray( sort( arr5 ) );
       printArray( sort( arr6 ) );
       printArray( sort( arr7 ) );
+      /*~~~~~~~~~~~~~~ Ye Olde Tester Bar ~~~~~~~~~~~~~~
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   }//end main()
 
