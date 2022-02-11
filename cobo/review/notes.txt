@@ -1,32 +1,33 @@
-Here be my notes
+1.1
+(a) public static double sentimentVal(String word)
+(b) This method requires a parameter of type String. If you pass a different type of parameter, it will throw an error.
+(c) This method returns a value of type double.
 
-ACT.1
+1.2
+sentimentVal("ability") -> -0.03
+sentimentVal("academic") -> 0.43
+sentimentVal("absolute") -> -1.51
 
-1.a public static double sentimentVal( String word )
+1.3
+(a) Will compile. The parameter is of type String and the result is assigned to a variable of type double.
+(b) Will not compile. The parameter is of type double, not String, and the variable the result is assigned to is of type String.
+(c) Will not compile. There are two parameters given, not one.
 
-1b. Yes, it requires a String parameter.
-  -> It will return a incompatible type error.
+2.4
+The totalSentiment() method converts the contents of the parameter 'fileName' into text using the method textToString(). 
+It then splits the resulting text by spaces and stores it in the String array 'words'.
+It then iterates through the array, taking out punctuation, if any, using the method removePunctuation() and calculates the sentiment value of that word using the method sentimentVal().
+It then adds that to a current 'totalSentiment' tracker.
+After iteration is complete, it returns 'totalSentiment'.
 
-1.c. Yes, the method returns a double.
+2.5
+(a) The ratings sometimes make sense but can also deviate from the actual review by quite a lot other times.
+(b) We can adjust our totalSentiment() method by making it look at adjacent words for "emphasis" words. This way, it can decide whether a word such as "definitely", which normally seems positive, is assigned the right sign (e.g. definitely in "definitely not")
+    We can also make our totalSentiment() method better by taking the average of the sentiment rather than the total of the sentiment. This way, the length of the review does not play as much of a factor in the final sentiment rating.
 
-2. In Review.java main method
+2.6
+The student put more exclusive booleans after the more inclusive ones. In doing this, every boolean that should satisfy a lesser boolean first would always run into the first one, assigning every value < 15 to return a star rating of 4. To fix this, just invert the boolean order so that the more exclusive ones are higher in the conditional tree.
 
-3.
-  a.
-  double num = sentimentVal("warm");
-  - yes, sentimentVal returns a double.
-
-  b.
-  String word =  sentimentVal(0.5);
-  - no, will get an incompatible type Error
-
-  c.
-  double x = sentimentVal("good", "bad");
-  - no, will get an error re: too many parameters given
-
-
-ACT.2
-4. Total sentiment works by iterating through the String array words, and adding
-    every sentiment value to a "total", which is returned.
-
-5. The ratings don't make much sense, seeing as the reviews are both good, and yet the ratings are 1 and 2, so fairly inaccurate.
+3.3
+The indexOf() method allows for the computer to find the first index where the substring occurs. The substring() method allows us to separate a string from index start to index end - 1 where start and end are specified by the user. These work in tandem to help divide a string into two parts because the former finds the index where we perform the substring split and the latter does the splitting.
+It is necessary to add 1 to the position of the space when copying the remainder of the string because it is important to remember that it starts the substring from that index and, therefore, not adding 1 would include the space in the remaining string.
