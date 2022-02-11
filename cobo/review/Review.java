@@ -171,22 +171,22 @@ public class Review {
     for(String str : words){
       totalSentiment += sentimentVal(str);
     }
-    return totalSentiment/words.length;
+    return totalSentiment;
   }
 
   public static int starRating(String fileName){
-    sentiment = totalSentiment(fileName);
+    double sentiment = totalSentiment(fileName);
 
-    if (sentiment < -0.75){
+    if (sentiment < 0){
       return 1;
     }
-    else if (sentiment < -0.25){
+    else if (sentiment < 10){
       return 2;
     }
-    else if (sentiment < 0.25){
+    else if (sentiment < 20){
       return 4;
     }
-    else if (sentiment < 0.75){
+    else if (sentiment < 30){
       return 4;
     }
     else{
@@ -209,5 +209,12 @@ public class Review {
 
     //1
     System.out.println(totalSentiment("SimpleReview.txt"));
+    System.out.println(starRating("SimpleReview.txt"));
+
+    System.out.println(totalSentiment("StuyReview1.txt"));
+    System.out.println(starRating("StuyReview1.txt"));
+
+    System.out.println(totalSentiment("StuyReview2.txt"));
+    System.out.println(starRating("StuyReview2.txt"));
   }
 }

@@ -26,4 +26,7 @@ ACT.1
 
 
 ACT.2
-1.
+4. Total sentiment works by iterating through the String array words, and adding
+    every sentiment value to a "total", which is returned.
+
+5. The ratings don't make much sense, seeing as the reviews are both good, and yet the ratings are 1 and 2, so fairly inaccurate.
