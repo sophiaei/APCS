@@ -37,7 +37,6 @@ public class Review {
       Scanner input = new Scanner(new File("positiveAdjectives.txt"));
       while(input.hasNextLine()){
         String temp = input.nextLine().trim();
-        System.out.println(temp);
         posAdjectives.add(temp);
       }
       input.close();
@@ -99,7 +98,7 @@ public class Review {
   }
 
   public static double totalSentiment(String fileName) {
-    String[] words = textToString(fileName).split(" ");
+    String[] words = textToString(fileName).split(SPACE);
     double totalSentiment = 0;
     for (String word : words) {
         word = removePunctuation(word);
@@ -119,7 +118,40 @@ public class Review {
   }
 
   public static String fakeReview(String fileName) {
-    
+    String fake = textToString(fileName);
+    while (fake.indexOf("*") != -1) {
+        String finished = fake.substring(0, fake.indexOf("*"));
+        String unfinished = fake.substring(fake.indexOf(SPACE, fake.indexOf("*")));
+        String word = removePunctuation(fake.substring(fake.indexOf("*") + 1, fake.indexOf(SPACE, fake.indexOf("*"))));
+        if (posAdjectives.contains(word)) {
+            fake = finished + randomPositiveAdj(word) + unfinished;
+        }
+        else if (negAdjectives.contains(word)) {
+            fake = finished + randomNegativeAdj(word) + unfinished;
+        }
+        else {
+            return "Unable to generate fake review because certain starred adjectives are not found in either file";
+        }
+    }
+    return fake;
+  }
+
+  public static String randomPositiveAdj(String excluded) {
+    int index = (int) (Math.random() * posAdjectives.size());
+    int excludedIndex = posAdjectives.indexOf(excluded);
+    while (index == excludedIndex) {
+        index = (int) (Math.random() * posAdjectives.size());
+    }
+    return posAdjectives.get(index);
+  }
+
+  public static String randomNegativeAdj(String excluded) {
+    int index = (int) (Math.random() * negAdjectives.size());
+    int excludedIndex = negAdjectives.indexOf(excluded);
+    while (index == excludedIndex) {
+        index = (int) (Math.random() * negAdjectives.size());
+    }
+    return negAdjectives.get(index);
   }
   
   /**
@@ -197,5 +229,7 @@ public class Review {
       System.out.println(starRating("SimpleReview.txt"));
       System.out.println(starRating("YelpReview1(5S).txt"));
       System.out.println(starRating("YelpReview2(1S).txt"));
+
+      System.out.println(fakeReview("SimpleReview.txt"));
   }
 }

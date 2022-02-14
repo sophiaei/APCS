@@ -27,7 +27,72 @@ After iteration is complete, it returns 'totalSentiment'.
 
 2.6
 The student put more exclusive booleans after the more inclusive ones. In doing this, every boolean that should satisfy a lesser boolean first would always run into the first one, assigning every value < 15 to return a star rating of 4. To fix this, just invert the boolean order so that the more exclusive ones are higher in the conditional tree.
+For example, if the total sentiment were -5, normally this would be negative and, as such, should yield a star rating of 1 or 2. However, in the order he puts, the inclusive '<15' is always checked first and, as such, the more exclusive booleans are, in essence, unnecessary as all sentiment values that are technically categorized as those ratings are already checked by the more inclusive '<15' condition.
 
 3.3
 The indexOf() method allows for the computer to find the first index where the substring occurs. The substring() method allows us to separate a string from index start to index end - 1 where start and end are specified by the user. These work in tandem to help divide a string into two parts because the former finds the index where we perform the substring split and the latter does the splitting.
 It is necessary to add 1 to the position of the space when copying the remainder of the string because it is important to remember that it starts the substring from that index and, therefore, not adding 1 would include the space in the remaining string.
+
+3.5
+Calling static methods don't require the need to create an instance of the class as it already belongs to the class. Calling nonstatic methods, on the other hand, require creating an instance of the class.
+
+3.6
+The method fakeReview can be modified to create a fake positive or fake negative review by using the randomPositiveAdj() and randomNegativeAdj() methods respectively.
+
+4.1
+Lower reputation of other companies
+
+4.2
+Boost reputation of your company
+
+4.3
+The method should be able to have access to more biased adjectives for more variety in the reviews.
+while * in review:
+    String finished = fake.substring(0, fake.indexOf("*"));
+    String unfinished = fake.substring(fake.indexOf(SPACE, fake.indexOf("*")));
+    String word = removePunctuation(fake.substring(fake.indexOf("*") + 1, fake.indexOf(SPACE, fake.indexOf("*"))));
+    if word in posAdjectives:
+        fake = finished + randomPositiveAdj(word) + unfinished
+    else if word in negAdjectives: 
+        fake = finished + randomNegativeAdj(word) + unfinished
+    else:
+        return "Unable to generate fake review because certain starred adjectives are not found in either file"
+
+4.5
+The reference oneWord points to a String object of the original oneWord object with the first character removed.
+
+4.6
+It was necessary to remove the * character and other symbols because it would interfere with getting the sentiment value from the hashmap.
+
+4.7
+Add more positive adjectives to the review.
+
+5.1
+I chose to implement a cipher because it deals with string modification and seemed interesting.
+
+5.2
+Development process:
+- Analyzing test cases, dividing the undeveloped algorithm into certain conditions and then deriving what it does under each condition.
+- Found out that approach is not ideal 🙄. Review algorithm and develop more succinct one. Printing at certain points in the algorithm helps to get an idea of what is wrong.
+
+5.3
+'public static String encode(String plain, String keyword)'. I chose two parameters because one String represents the text to be encoded whereas the second String represents the key which the encoding revolves around.
+I made the method static so it could be accessed by the main method for testing.
+
+5.4
+'char[] charArray = plain.toCharArray()': This converts the text to be encoded into a character array for iteration during the encoding process.
+'keyword.charAt(i % keyword.length())': The length() method returns the length of the String object.
+
+5.5
+'if (c < 65 || c > 90)' EQUIVALENT CODE: 'if (c < 'A' || c > 'Z')'
+
+5.6
+'for (char c : charArray) {
+    //code
+}'
+The loop iterates through the character array and manipulates it according to the algorithm.
+
+EQUIVALENT CODE: 
+'for (int i = 0; i < charArray.length; i++) {
+    //code
+}'
