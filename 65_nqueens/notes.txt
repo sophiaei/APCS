@@ -1,0 +1,7 @@
+Sophia Eiden, Jing Yi Feng, David Deng
+APCS pd6
+HW65: How Many Queens Can a Thinker Place, If a Thinker Can Place Queens...
+2022-02-16w
+Time Spent: 0.5 hrs
+
+A solution is present for all(?) boards other than 2x2 and 3x3 ones.

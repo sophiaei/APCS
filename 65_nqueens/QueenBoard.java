@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /***
  * class QueenBoard
  * Generates solutions for N-Queens problem.
@@ -27,12 +29,9 @@ public class QueenBoard
    */
   public boolean solve()
   {
-    n = 0;
-    if (solveH(n)){
-      return true;
-    }
-
-    return false;
+    boolean status = solveH(0);
+    printSolution();
+    return status;
   }
 
 
@@ -41,20 +40,16 @@ public class QueenBoard
    */
   private boolean solveH( int col )
   {
-    if (col == _board.length){
+    if (col >= _board.length){
       return true;
     }
     for (int i =0; i < _board.length; i++){
       if (addQueen(i,col)){
-        return solveH(col+1);
-      }
-      else{
-        for (int j = 0; j < _board.length; j++){
-          if (removeQueen(j, col -1)){
-            return solveH(col-1);
-          }
+        if (solveH(col+1)) {
+            return true;
         }
       }
+      removeQueen(i, col);
     }
     return false;
   }
@@ -67,6 +62,17 @@ public class QueenBoard
         all negs and 0's replaced with underscore
         all 1's replaced with 'Q'
     */
+    for (int[] row : _board) {
+        for (int square : row) {
+            if (square == 1) {
+                System.out.print("Q ");
+            }
+            else {
+                System.out.print("_ ");
+            }
+        }
+        System.out.println();
+    }
   }
 
 
@@ -180,6 +186,28 @@ public class QueenBoard
     */
 
     b.solve();
+    System.out.println();
+
+    QueenBoard _8x8 = new QueenBoard(8);
+    _8x8.solve();
+
+    int pos = 0;
+    ArrayList<String> impos = new ArrayList<String>();
+    for (int i = 1; i <= 30; i++) {
+        QueenBoard qb = new QueenBoard(i);
+        if (qb.solvE()) {
+            pos++;
+        }
+        else {
+            impos.add(String.valueOf(i));
+        }
+    }
+    System.out.printf("\nPossible / Total: %d/%d\n", pos, 30);
+    System.out.println("Impossible for square arrays of length: " + String.join(", ", impos));
+  }
+
+  public boolean solvE() {
+      return solveH(0);
   }
 
 }//end class
