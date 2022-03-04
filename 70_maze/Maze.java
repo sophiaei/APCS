@@ -37,11 +37,11 @@ class MazeSolver
   private boolean _solved;
 
   //~~~~~~~~~~~~~  L E G E N D  ~~~~~~~~~~~~~
-  final private char HERO =           ' @';
-  final private char PATH =           ' #';
-  final private char WALL =           '  ';
-  final private char EXIT =           ' $';
-  final private char VISITED_PATH =   ' .';
+  final private char HERO =           '@';
+  final private char PATH =           '#';
+  final private char WALL =           ' ';
+  final private char EXIT =           '$';
+  final private char VISITED_PATH =   '.';
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   public MazeSolver( String inputFile )
@@ -131,27 +131,29 @@ class MazeSolver
 
     //primary base case
     if ( _solved ) {
-      System.exit();
+      System.exit(0);
     }
     //other base cases
-    else if ( _maze[x][y].equals(" $") ) {
-	???
+    else if ( _maze[x][y] == '$' ) {
+      _solved = true;
       return;
     }
     //otherwise, recursively solve maze from next pos over,
     //after marking current location
     else {
-	???
+      _maze[x][y] = '.';
       System.out.println( this ); //refresh screen
-
-???
+      solve(x+1,y);
+      solve(x-1,y);
+      solve(x,y+1);
+      solve(x,y-1);
       System.out.println( this ); //refresh screen
     }
   }
 
   //accessor method to help with randomized drop-in location
   public boolean onPath( int x, int y) {
-
+    _maze[x][y] = '@';
   }
 
 }//end class MazeSolver
