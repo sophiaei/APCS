@@ -1,8 +1,8 @@
-// Clyde Sinclair
-// APCS pd0
-// HW69 -- maze solving (blind, depth-first)
+// UCC: Kaitlin, Sophia, Hugo, Apple, Rhaby, Boary
+// APCS pd06
+// HW69 -- Thinkers of the Cord
 // 2022-03-03r
-// time spent:  hrs
+// time spent: 1 hrs
 
 /***
  * SKEELTON for
@@ -15,12 +15,13 @@
  * (mazefile is ASCII representation of a maze, using symbols below)
  *
  * ALGORITHM for finding exit from starting position:
- *  <INSERT YOUR SUMMARY OF ALGO HERE>
+ *  Recursively check each adjacent position for a dead end or the exit. If a dead end is reached, check the next possible position.
  *
  * DISCO
- *
+ * -
  * QCC
- *
+ * - From the recursive part of solve, the maze runs correctly with @ and . swapped (inversed). If they are switched so they are
+ *   representing the correct things, the code does not work. Why?
  ***/
 
 //enable file I/O
@@ -105,6 +106,13 @@ class MazeSolver
     return retStr;
   }
 
+  // public getmaze_row(){
+  //   return _maze.length;
+  // }
+  //
+  // public getmaze_column(){
+  //   return _maze[0].length;
+  // }
 
   /**
    * helper method to keep try/catch clutter out of main flow
@@ -134,33 +142,41 @@ class MazeSolver
       System.exit(0);
     }
     //other base cases
-    else if ( _maze[x][y] == '$' ) {
+    else if ( _maze[x][y] == EXIT ) {
       _solved = true;
       return;
     }
+
+    else if (_maze[x][y] != PATH){
+      return;
+    }
+
     //otherwise, recursively solve maze from next pos over,
     //after marking current location
     else {
-      _maze[x][y] = '.';
+      _maze[x][y] = HERO;
       System.out.println( this ); //refresh screen
       solve(x+1,y);
       solve(x-1,y);
       solve(x,y+1);
       solve(x,y-1);
       System.out.println( this ); //refresh screen
+      _maze[x][y] = VISITED_PATH;
+      return;
     }
   }
 
+
   //accessor method to help with randomized drop-in location
   public boolean onPath( int x, int y) {
-    _maze[x][y] = '@';
+    return (_maze[x][y] == PATH);
   }
+
 
 }//end class MazeSolver
 
 
-public class Maze
-{
+public class Maze{
   public static void main( String[] args )
   {
     String mazeInputFile = null;
@@ -184,11 +200,19 @@ public class Maze
 
     //drop hero into the maze (coords must be on path)
     // ThinkerTODO: comment next line out when ready to randomize startpos
-    ms.solve( 4, 3 );
+    //ms.solve( 4, 3 );
 
     //drop our hero into maze at random location on path
     // YOUR RANDOM-POSITION-GENERATOR CODE HERE
-    //ms.solve( startX, startY );
+    int startX = (int)(Math.random()*80);
+    int startY = (int)(Math.random()*25);
+    while (ms.onPath(startX, startY) == false){
+      startX = (int)(Math.random()*80);
+      startY = (int)(Math.random()*25);
+    }
+    ms.solve(startX,startY);
+
+  //  ms.solve( startX, startY );
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   }//end main()
