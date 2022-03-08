@@ -1,0 +1,16 @@
+USAGE of this dir:
+
+* create subdir for your team (format: pd_TN-P-G)
+* store your maze files in subdir (format: XX.maze)
+* make at least 1 of each: EZ, med, HARD -- plus as many extras as you like
+
+
+LEGEND:
+'@'	our hero
+'#'	valid path
+' '	wall
+'$'	exit
+'.'	visited
+
+
+
