@@ -122,7 +122,7 @@ public class Mysterion
     int[] arr1 = {8,21,17,69,343};
     int[] arr3 = {1,28,33,4982,37};
     int[] arr4 = {5,4,17,9000,6};
-    int[] arr5 = {3,0,16,599,1024};
+    int[] arr5 = {3,2,1,0};
 
 
     // run mysterion on each array,
@@ -154,7 +154,7 @@ public class Mysterion
 
     System.out.println("arr5:");
     printArr(arr5);
-    mysterion(arr5,0,4,testC);
+    mysterion(arr5,0,3,3);
     System.out.println("after mysterion w/ a=0,b=4,c="
     + testC +"...");
     printArr(arr5);
