@@ -1,23 +1,30 @@
-//Clyde Sinclair
-//APCS pd0
-//HW72 -- QuickSort
-//2022-03-09w
-//time spent: _h
+// (FA)FSA:: Ameer Alnasser, Fang Min Chen, Sophia Eiden
+// APCS pd6
+// HW73: All About the About Face
+// 2022-03-09
+// time spent: 0.5 hours
 
-/***
- * class QuickSort
- * Implements quicksort algo to sort an array of ints in place
- *
- * 1. Summary of QuickSort algorithm:
- * QSort(arr):
- *
- * 2a. Worst pivot choice and associated run time:
- *
- * 2b. Best pivot choice and associated run time:
- *
- * 3. Approach to handling duplicate values in array:
- *
- **/
+/*
+0. Augment block (javadocs) comment for partition method to document how it picks a pivot.
+
+1. express the quicksort algorithm as cleanly as possible,
+
+  If the array is longer than one element
+
+    Select a random pivot pivotIndex
+    Partition the array based on that index, note the final position.
+
+    Partition all the elements higher than the pivotIndex recursively
+    Partition all the elements smaller than the pivotIndex recursively
+
+2. describe the best and worst pivot choices and categorize their time complexities,
+
+  There isn't really a best/worst pivot choice, given that the pivotIndex says nothing
+  about the content of the index. Best and worst, then depends on the content of the array.
+
+3.explain how you handle duplicate values in the array.
+
+*/
 
 public class QuickSort
 {
@@ -58,10 +65,23 @@ public class QuickSort
       retArr[i] = (int)( maxVal * Math.random() );
     return retArr;
   }
+
+  public static int partition( int[] arr, int a, int b, int c)
+  {
+    int v = arr[c];
+    swap( c, b, arr);
+    int s = a;
+
+    for( int i = a; i < b; i++ ) {
+      if ( arr[i] <= v) {
+        swap( i, s, arr );
+        s++;}
+    }
+    swap(s,b,arr);
+
+    return s;
+  }
   //--------------^  HELPER METHODS  ^--------------
-
-
-
 
   /**
    * void qsort(int[])
@@ -69,19 +89,32 @@ public class QuickSort
    */
   public static void qsort( int[] d )
   {
-
+    sorter(d, 0, d.length-1);
   }
+
 
   //you may need a helper method...
 
+  public static void sorter(int[] list, int left, int right)
+  {
 
-  
+
+    if (left < right){
+      int pivotIndex = left + (int)(Math.random()*(Math.abs(left-right)));
+      pivotIndex = partition(list, left, right, pivotIndex);
+
+      sorter(list, left, pivotIndex - 1);
+      sorter(list, pivotIndex + 1, right);
+    }
+  }
+
+
 
 
   //main method for testing
   public static void main( String[] args )
   {
-    /*~~~~s~l~i~d~e~~~m~e~~~d~o~w~n~~~~~~~~~~~~~~~~~~~~ (C-k, C-k, C-y) 
+
 
     //get-it-up-and-running, static test case:
     int [] arr1 = {7,1,5,12,3};
@@ -92,6 +125,7 @@ public class QuickSort
     System.out.println("arr1 after qsort: " );
     printArr(arr1);
 
+    /*~~~~s~l~i~d~e~~~m~e~~~d~o~w~n~~~~~~~~~~~~~~~~~~~~ (C-k, C-k, C-y)
     // randomly-generated arrays of n distinct vals
     int[] arrN = new int[10];
     for( int i = 0; i < arrN.length; i++ )

@@ -14,7 +14,7 @@ We are stuck on a runtime error and we could not find the source, despite trying
 What is suppsoed to be the otuput of partition!?!?!?!?!?!??!/
 //Time Complexity: N/A, stuck on a runtime error. Trying for O(log n), despite best efforts
 */
-public class FastSelect
+public class QuickSelect
 {
   //--------------v  HELPER METHODS  v--------------
   //swap values at indices x, y in array o
@@ -71,24 +71,23 @@ public class FastSelect
     }
     swap(s,b,arr);
 
-    return c;
+    return s;
   }//end partition
-  // Returns the k-th smallest element of list within left..right inclusive
-  // (i.e. left <= k <= right).
-  public static int select(int[] list, int left, int right,int k){
-      if (left == right){   // If the list contains only one element,
-          return list[left];
+
+  public static int select(int[] list, int left, int right, int k){
+
+      int pivotIndex = (int)(Math.random()*(Math.abs(left-right)));
+
+      pivotIndex = partition(list, left, right, pivotIndex);
+
+      if (k-1 == pivotIndex){
+        return list[pivotIndex];
       }
-        int pivotIndex = (int)(Math.random()*(Math.abs(left-right)));     // select a pivotIndex between left and right,
-        pivotIndex = partition(list, left, right, pivotIndex);
-        if (k == pivotIndex){
-          return list[k];
-        }
-      else if (k < pivotIndex){
-          return select(list, left, pivotIndex - 1, k);
+      else if (pivotIndex < k - 1){
+          return select(list, pivotIndex + 1, right, k);
         }
       else{
-          return select(list, pivotIndex + 1, right, k);
+          return select(list, left, pivotIndex - 1, k);
         }
       }
 
@@ -110,16 +109,16 @@ public class FastSelect
 
       System.out.println("after partition w/ a=0,b=4,c="
                          + y +"...");
-      System.out.println(select(arr1,0,4,y-1));//-> n (40,1,2)
+      System.out.println(select(arr1,0,4,y));//-> n (40,1,2)
       System.out.println("-----------------------");
 
-      // System.out.println("arr3:");
-      // printArr(arr3);
-      // partition(arr3,0,4,y);
-      // System.out.println("after partition w/ a=0,b=4,c="
-      //                    + y +"...");
-      // printArr(arr3);
-      // System.out.println("-----------------------");
+      System.out.println("arr3: ");
+      printArr(arr3);
+
+      System.out.println("after partition w/ a=0,b=4,c="
+                         + y +"...");
+      System.out.println(select(arr3,0,4,y));//-> n (40,1,2)
+      System.out.println("-----------------------");
       //
       // System.out.println("arr4:");
       // printArr(arr4);
