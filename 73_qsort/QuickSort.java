@@ -19,10 +19,31 @@
 
 2. describe the best and worst pivot choices and categorize their time complexities,
 
-  There isn't really a best/worst pivot choice, given that the pivotIndex says nothing
-  about the content of the index. Best and worst, then depends on the content of the array.
+    There isn't really a best/worst pivot choice, given that the pivotIndex says nothing
+    about the content of the index. Best and worst, then depends on the content of the array.
 
-3.explain how you handle duplicate values in the array.
+    Runtime based on Pivot Number (looped 10000 times on randomly populated int[1000])
+    0: 0.898 s
+    99: 0.885 s
+    199: 0.914 s
+    299: 0.913 s
+    399: 0.930 s
+    499: 0.898 s
+    599: 0.916 s
+    699: 0.915 s
+    799: 0.900 s
+    899: 0.899 s
+    999: 0.904 s
+    
+    Data doesn't show a clear relationship between pivot choice and runtime, though further
+    tests can be made with larger arrays to clarify.
+    Time complexity of the sort is nlogn, since it utilizes the partition (O(n)) in a
+    logarithmic manner, cutting the length of focus in half every time, similar to binary search.
+
+3. explain how you handle duplicate values in the array.
+  We treated any duplicate value to act as if it is smaller than the element in
+  the pivot position, thus increasing the new pivotIndex by however many duplicates
+  there are.
 
 */
 
