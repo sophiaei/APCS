@@ -1,9 +1,25 @@
-// Clyde Sinclair
-// APCS pd0
-// HW76 -- implement linked list
+// (FA)FSA: Fang, Sophia, Ammer
+// APCS pd06
+// HW77 -- Insert|Remove
 // 2022-03-14m
-// time spent:  hrs
+// time spent: .5 hrs
 
+/*
+DISCO
+- If you modify an alias, the original Object is modified as well.
+QCC
+- Regarding the DISCO, since java is pass-by-value, why does setting the LLNode
+tmp to _head give it the reference of _head instead of a copy of the contents?
+ALGO ADD
+- Traverse to the node with given index.
+- Set next to a new node with the cargo as that of the current node and next as
+that of the current node
+- Set the cargo to the new value.
+ALGO REMOVE
+- Traverse to the node with given index.
+- Set the cargo as that of the next node.
+- Set next to that of the next node.
+*/
 
 /***
  * class LList
@@ -75,19 +91,40 @@ public class LList implements List //interface def must be in this dir
     return oldVal;
   }
 
-  public String remove( int index){
-    LLNode tmp = _head;
-    String oldVal = _head.get(index);
+  public void add(int index, String newVal)
+  {
+    if ( index < 0 || index >= size() )
+      throw new IndexOutOfBoundsException();
 
-    for( int i=0; i < index+1; i++ ){
+    LLNode tmp = _head; //create alias to head
+
+    //walk to desired node
+    for( int i=0; i < index; i++ )
       tmp = tmp.getNext();
-    }
-    for (int i = index; i > 0; i--){
-      tmp.add(_head.get(i));
-    }
-    _head = tmp;
+
+    tmp.setNext( new LLNode( tmp.getCargo(), tmp.getNext() ) );
+    tmp.setCargo( newVal );
+  }
+
+  public String remove(int index)
+  {
+    if ( index < 0 || index >= size() )
+      throw new IndexOutOfBoundsException();
+
+    LLNode tmp = _head; //create alias to head
+
+    //walk to desired node
+    for( int i=0; i < index; i++ )
+      tmp = tmp.getNext();
+
+    String oldVal = tmp.getCargo();
+    tmp.setCargo( tmp.getNext().getCargo() );
+    tmp.setNext( tmp.getNext().getNext() );
+
     return oldVal;
   }
+
+
   //return number of nodes in list
   public int size() { return _size; }
 
@@ -114,28 +151,24 @@ public class LList implements List //interface def must be in this dir
     LList james = new LList();
 
     System.out.println( james );
-    System.out.println( "size: " + james.size() );
 
     james.add("beat");
-    System.out.println( james );
-    System.out.println( "size: " + james.size() );
 
     james.add("a");
-    System.out.println( james );
-    System.out.println( "size: " + james.size() );
 
     james.add("need");
-    System.out.println( james );
-    System.out.println( "size: " + james.size() );
 
     james.add("I");
-    System.out.println( james );
-    System.out.println( "size: " + james.size() );
-
-    System.out.println( "2nd item is: " + james.get(1) );
 
     james.set( 1, "got" );
-    System.out.println( "...and now 2nd item is: " + james.set(1,"got") );
+
+    System.out.println( james );
+
+    james.add( 3, "blah" );
+
+    System.out.println( james );
+
+    james.remove( 3 );
 
     System.out.println( james );
   }

@@ -2,7 +2,7 @@
  * interface List
  * subset of actual Java List interface
  * Specifies actions a List must be able to perform.
- * 
+ *
  * If placed in current working dir, will be consulted instead of
  *  built-in Java library interface.
  **/

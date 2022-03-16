@@ -1,8 +1,9 @@
-// Clyde Sinclair
-// APCS pd0
-// HW75 -- implement a node for a linked list
-// 2022-03-14m
-// time spent:  hrs
+// LIBRARY CODE
+
+//Clyde Sinclair
+//APCS pd0
+//HW75 -- Node for a linked list
+//2022-03-11f
 
 /***
  * class LLNode
@@ -78,8 +79,8 @@ public class LLNode
 
     /* A naive list traversal, has side effects.... ??
        while( first != null ) {
-       System.out.println( first );
-       first = first.getNext();
+         System.out.println( first );
+         first = first.getNext();
        }
     */
 
@@ -88,11 +89,11 @@ public class LLNode
 
     //  so, better: (w/o moving first)
     /*
-    LLNode temp = first;
-    while( temp != null ) {
-      System.out.println( temp );
-      temp = temp.getNext();
-    }
+      LLNode temp = first;
+      while( temp != null ) {
+        System.out.println( temp );
+        temp = temp.getNext();
+      }
     */
 
   }//end main
