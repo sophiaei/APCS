@@ -1,32 +1,10 @@
-// (FA)FSA: Fang, Sophia, Ammer
-// APCS pd06
-// HW77 -- Insert|Remove
-// 2022-03-14m
-// time spent: .5 hrs
-
-/*
-DISCO
-- If you modify an alias, the original Object is modified as well.
-QCC
-- Regarding the DISCO, since java is pass-by-value, why does setting the LLNode
-tmp to _head give it the reference of _head instead of a copy of the contents?
-ALGO ADD
-- Traverse to the node with given index.
-- Set next to a new node with the cargo as that of the current node and next as
-that of the current node
-- Set the cargo to the new value.
-ALGO REMOVE
-- Traverse to the node with given index.
-- Set the cargo as that of the next node.
-- Set next to that of the next node.
-*/
-
-/***
+/*****************************************************
  * class LList
  * Implements a linked list of LLNodes, each containing String data
- **/
+ * new in v2: add-at-index, remove
+ *****************************************************/
 
-public class LList implements List //interface def must be in this dir
+public class LList implements List //your List interface must be in same dir
 {
 
   //instance vars
@@ -55,14 +33,14 @@ public class LList implements List //interface def must be in this dir
   public String get( int index )
   {
     if ( index < 0 || index >= size() )
-      throw new IndexOutOfBoundsException();
+	    throw new IndexOutOfBoundsException();
 
     String retVal;
     LLNode tmp = _head; //create alias to head
 
     //walk to desired node
     for( int i=0; i < index; i++ )
-      tmp = tmp.getNext();
+	    tmp = tmp.getNext();
 
     //check target node's cargo hold
     retVal = tmp.getCargo();
@@ -74,13 +52,13 @@ public class LList implements List //interface def must be in this dir
   {
 
     if ( index < 0 || index >= size() )
-      throw new IndexOutOfBoundsException();
+	    throw new IndexOutOfBoundsException();
 
     LLNode tmp = _head; //create alias to head
 
     //walk to desired node
     for( int i=0; i < index; i++ )
-      tmp = tmp.getNext();
+	    tmp = tmp.getNext();
 
     //store target node's cargo
     String oldVal = tmp.getCargo();
@@ -91,42 +69,73 @@ public class LList implements List //interface def must be in this dir
     return oldVal;
   }
 
-  public void add(int index, String newVal)
-  {
-    if ( index < 0 || index >= size() )
-      throw new IndexOutOfBoundsException();
-
-    LLNode tmp = _head; //create alias to head
-
-    //walk to desired node
-    for( int i=0; i < index; i++ )
-      tmp = tmp.getNext();
-
-    tmp.setNext( new LLNode( tmp.getCargo(), tmp.getNext() ) );
-    tmp.setCargo( newVal );
-  }
-
-  public String remove(int index)
-  {
-    if ( index < 0 || index >= size() )
-      throw new IndexOutOfBoundsException();
-
-    LLNode tmp = _head; //create alias to head
-
-    //walk to desired node
-    for( int i=0; i < index; i++ )
-      tmp = tmp.getNext();
-
-    String oldVal = tmp.getCargo();
-    tmp.setCargo( tmp.getNext().getCargo() );
-    tmp.setNext( tmp.getNext().getNext() );
-
-    return oldVal;
-  }
-
 
   //return number of nodes in list
   public int size() { return _size; }
+
+
+  //insert a node containing newVal at position index
+  public void add( int index, String newVal ) {
+
+    if ( index < 0 || index >= size() )
+	    throw new IndexOutOfBoundsException();
+
+    LLNode newNode = new LLNode( newVal, null );
+
+    //if index==0, insert node before head node
+    if ( index == 0 )
+	    add( newVal );
+    else {
+	    LLNode tmp = _head; //create alias to head
+
+	    //walk to node before desired node
+	    for( int i=0; i < index-1; i++ )
+        tmp = tmp.getNext();
+
+	    //insert new node
+	    newNode.setNext( tmp.getNext() );
+	    tmp.setNext( newNode );
+
+	    //increment size attribute
+	    _size++;
+    }
+  }
+
+
+  //remove node at pos index, return its cargo
+  public String remove( int index ) {
+
+    if ( index < 0 || index >= size() )
+	    throw new IndexOutOfBoundsException();
+
+    String retVal;
+    LLNode tmp = _head; //create alias to head
+
+    //if index==0, remove head node
+    if ( index == 0 ) {
+	    //check target node's cargo hold
+	    retVal = _head.getCargo();
+
+	    //remove target node
+	    _head = _head.getNext();
+    }
+    else {
+	    //walk to node before desired node
+	    for( int i=0; i < index-1; i++ )
+        tmp = tmp.getNext();
+
+	    //check target node's cargo hold
+	    retVal = tmp.getNext().getCargo();
+
+	    //remove target node
+	    tmp.setNext( tmp.getNext().getNext() );
+    }
+
+    //decrement size attribute
+    _size--;
+
+    return retVal;
+  }
 
   //--------------^  List interface methods  ^--------------
 
@@ -148,28 +157,52 @@ public class LList implements List //interface def must be in this dir
   //main method for testing
   public static void main( String[] args )
   {
+
     LList james = new LList();
 
     System.out.println( james );
+    System.out.println( "size: " + james.size() );
 
     james.add("beat");
+    System.out.println( james );
+    System.out.println( "size: " + james.size() );
 
     james.add("a");
+    System.out.println( james );
+    System.out.println( "size: " + james.size() );
 
     james.add("need");
+    System.out.println( james );
+    System.out.println( "size: " + james.size() );
 
     james.add("I");
+    System.out.println( james );
+    System.out.println( "size: " + james.size() );
 
-    james.set( 1, "got" );
+    System.out.println( "2nd item is: " + james.get(1) );
 
+    System.out.println( "...and now 2nd item is: " + james.set(1,"got") );
     System.out.println( james );
 
-    james.add( 3, "blah" );
-
+    james.add(0,"whut");
+    System.out.println( "...after add(0,whut): " );
     System.out.println( james );
 
-    james.remove( 3 );
+    james.add(4,"phat");
+    System.out.println( "...after add(4,phat): " );
+    System.out.println( james );
 
+    System.out.println( "...after remove last: "
+                        + james.remove( james._size-1) );
+    System.out.println( james );
+
+    System.out.println( "...after remove(0): " + james.remove(0) );
+    System.out.println( james );
+
+    System.out.println( "...after remove(0): " + james.remove(0) );
+    System.out.println( james );
+
+    System.out.println( "...after remove(0): " + james.remove(0) );
     System.out.println( james );
   }
 
