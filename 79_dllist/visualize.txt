@@ -1,0 +1,6 @@
+// (FA)FSA: Fang, Sophia, Ameer
+// APCS pd06
+// HW78 -- Double Up
+// 2022-03-16m
+// time spent: .5 hrs
+https://docs.google.com/presentation/d/1O2_iw5EXIKX_tuqs2XoXcIUeyG4oxIamu2g6imwb-Bc/edit#slide=id.p
