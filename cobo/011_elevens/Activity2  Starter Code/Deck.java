@@ -31,10 +31,10 @@ public class Deck {
 	 */
 	public Deck(String[] ranks, String[] suits, int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
-		for (rank in ranks){
-			for (suit in suits){
-				for (value in values){
-					cards.add(new Card(rank,suit, value));
+		for (int i = 0; i < ranks.length(); i++){
+			for (int j = 0; j < suits.length(); j++){
+				for (int g = 0; g < values.length(); g++){
+					cards.add(new Card(ranks[i],suit[j], value[g]));
 					size ++;
 				}
 			}
