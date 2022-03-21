@@ -1,3 +1,6 @@
+import java.util.List;
+import java.util.ArrayList;
+
 /**
  * This class provides a convenient way to test shuffling methods.
  */
@@ -28,6 +31,7 @@ public class Shuffler {
 		}
 		System.out.println();
 
+
 		System.out.println("Results of " + SHUFFLE_COUNT +
 								 " consecutive efficient selection shuffles:");
 		int[] values2 = {0, 1, 2, 3};
@@ -40,6 +44,7 @@ public class Shuffler {
 			System.out.println();
 		}
 		System.out.println();
+
 	}
 
 
@@ -49,10 +54,40 @@ public class Shuffler {
 	 * the cards in one half with the cards in the other.
 	 * @param values is an array of integers simulating cards to be shuffled.
 	 */
-	public static void perfectShuffle(int[] values) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
-	}
+	 public static void perfectShuffle(int[] values) {
+ 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		int[] firsthalf = new int[(values.length+1)/2];
+     int[] secondhalf= new int[(values.length)/2];
 
+     int counter = 0;
+		 int counter1 = 0;
+
+		 for (int k = 0; k < values.length; k++) {
+				if (k % 2 == 0){
+					firsthalf[counter] = values[k];
+				 }
+				else{
+					secondhalf[counter] = values[k];
+					counter++;
+				}
+			}
+
+		 for (int i = 0; i < firsthalf.length; i++) {
+			 values[counter1] = firsthalf[i];
+       counter1++;
+			}
+		 	for (int i = 0; i < secondhalf.length; i++) {
+			 values[counter1] = secondhalf[i];
+       counter1++;
+			}
+      }
+
+       //return values;
+/*
+    [1,2,3,4]
+    [1,2] [3,4]
+    [1,3,2,4]
+*/
 	/**
 	 * Apply an "efficient selection shuffle" to the argument.
 	 * The selection shuffle algorithm conceptually maintains two sequences
@@ -66,5 +101,14 @@ public class Shuffler {
 	 */
 	public static void selectionShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
-	}
+
+    for (int k = values.length-1; k >0; k--){
+
+      int rand = (int)Math.random()*(values.length);
+      int temp = values[rand];
+
+      values[rand] = values[k];
+      values[k] = temp;
+		}
+  }
 }

@@ -14,5 +14,9 @@ public class DeckTester {
 		int[] values = {2,1,6};
 		Deck deck1 = new Deck(ranks, suits, values);
 		System.out.println(deck1);
+
+		deck1.deal();
 	}
+
+
 }
