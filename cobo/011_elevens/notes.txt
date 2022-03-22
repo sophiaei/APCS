@@ -1,0 +1,12 @@
+Team ???: Ethan Lam, Sophia Eiden, Michael Kamela
+APCS pd06
+L07: But These Go Up To Eleven
+2022-03-21m
+time spent: 0.5 hrs
+
+Activity 6:
+1. 5 of spades and 6 of clubs, 5 of clubs and 6 of clubs
+2. Yes, because there are a total of 12 face cards and they must be taken out 3
+at a time. All others are paired up. Therefore if there are 3 cards left, they
+must be face cards, or else something was paired incorrectly.
+3. No, because when presented with both choices, they can both be taken.

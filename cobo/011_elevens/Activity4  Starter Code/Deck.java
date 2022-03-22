@@ -62,7 +62,15 @@ public class Deck {
 	 * and reset the size to represent the entire deck.
 	 */
 	public void shuffle() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
+		for (int k = cards.size() - 1; k > 0; k--) {
+			int size = k + 1;
+			int start = 0;
+			int rand = (int) (Math.random() * size) + start;
+			Card temp = cards.get(k);
+			cards.set(k, cards.get(rand));
+			cards.set(rand, temp);
+		}
+		size = cards.size();
 	}
 
 	/**
