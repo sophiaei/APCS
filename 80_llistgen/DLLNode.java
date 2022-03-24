@@ -5,15 +5,15 @@
 // time spent: .5 hrs
 
 
-public class DLLNode<Object>
+public class DLLNode<T>
 {
   //instance vars
-  private Object _cargo;
+  private T _cargo;
   private DLLNode _nextNode;
   private DLLNode _prevNode;
 
   // constructor
-  public DLLNode( DLLNode prev, Object value, DLLNode next )
+  public DLLNode( DLLNode prev, T value, DLLNode next )
   {
     _prevNode = prev;
     _cargo = value;
@@ -22,28 +22,27 @@ public class DLLNode<Object>
 
 
   //--------------v  ACCESSORS  v--------------
-  public Object getCargo()
+  public T getCargo()
   {
     return _cargo;
   }
 
-  public DLLNode getNext()
+  public DLLNode<T> getNext()
   {
     return _nextNode;
   }
 
-  public DLLNode getPrev()
+  public DLLNode<T> getPrev()
   {
     return _prevNode;
   }
-
   //--------------^  ACCESSORS  ^--------------
 
 
-  //--------------v  MUObjectAObjectORS  v--------------
-  public Object setCargo( Object newCargo )
+  //--------------v  MUTATORS  v--------------
+  public T setCargo( T newCargo )
   {
-    Object foo = getCargo();
+    T foo = getCargo();
     _cargo = newCargo;
     return foo;
   }
@@ -61,7 +60,7 @@ public class DLLNode<Object>
     _prevNode = newPrev;
     return foo;
   }
-  //--------------^  MUObjectAObjectORS  ^--------------
+  //--------------^  MUTATORS  ^--------------
 
 
   // override inherited toString

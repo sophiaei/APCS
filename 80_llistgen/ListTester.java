@@ -1,12 +1,12 @@
 /***
- * class ListObjectester
+ * class ListTester
  * ...for putting your LList through its paces
  *
  * Assumes local List.java (interface),
  *  overriding List interface from standard Java library
  **/
 
-public class ListObjectester
+public class ListTester
 {
   public static void main( String[] args )
   {
@@ -27,7 +27,7 @@ public class ListObjectester
     wu.add("Inspectah Deck");
 
     System.out.println(wu);
-    wu.add("Raekwon the Chef");
+    wu.add(7);
 
     System.out.println(wu);
     wu.add("U-God");

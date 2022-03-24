@@ -65,7 +65,7 @@ public class LList<Object> implements List<Object> //interface def must be in th
       throw new IndexOutOfBoundsException();
 
     DLLNode<Object> tmp = _head; //create alias to head
-Object
+
     //walk to desired node
     for( int i=0; i < index; i++ )
       tmp = tmp.getNext();
