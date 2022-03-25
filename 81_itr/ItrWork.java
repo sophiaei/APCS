@@ -1,3 +1,11 @@
+// (FA)FSA: Fang, Sophia, Ammer
+// APCS pd06
+// HW81 -- Thank you, Next
+// 2022-03-24r
+// time spent: .5 hrs
+
+
+
 /***
  * class ItrWork
  *  SKELETON
@@ -6,9 +14,11 @@
 
 /***
     DISCO
-
+    Every time itr.next() is run, the pointer immediately jumps to the next element, with no means of going back.
+    This is akin to the Singly Linked nodes we worked
     QCC
-
+    Why do we need an interim variable?
+    Is there a way to have a pointer "backwards" like the doubly linked node
     SUMMARY THE FIRST:
 
     SUMMARY THE SECOND:
@@ -74,8 +84,9 @@ public class ItrWork
     List<Integer> returner = new ArrayList<Integer>();
     Iterator itr = L.iterator();
     while ( itr.hasNext()){
-      if (((int)itr.next())%2 == 1){
-        returner.add((int)itr.next());
+      int x=(int)itr.next();
+     if (x%2 != 0){
+         returner.add(x);
       }
     }
     return returner;
@@ -86,8 +97,14 @@ public class ItrWork
   //modifies L s.t. it contains no evens
   public static void removeEvens( List<Integer> L )
   {
-    L = oddsB(L);
-  }
+    Iterator itr = L.iterator();
+    while ( itr.hasNext()){
+      int x=(int)itr.next();
+     if (x%2 == 0){
+         itr.remove();
+      }
+    }
+    }
 
 
   public static void main( String [] args )
