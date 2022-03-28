@@ -1,0 +1,14 @@
+(FA)FSA: Fang, Sophia, Ameer
+APCS pd06
+HW 82 -- Roll Your Own Iterator
+2022-03-25
+time spent: 0.5 hrs
+
+DISCO
+- FOREACH utilizes a pattern of hasNext() and next() to iterate through the list
+which means that the _dummy cannot be at the head node or else it won't process
+the first element [index 0].
+
+QCC
+- We used conditionals to ensure that the first element is being iterated
+through the FOREACH method. Is there a cleaner way to do so?

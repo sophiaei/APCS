@@ -11,7 +11,7 @@ public class V6Driver
   public static void main( String[] args )
   {
     List<String> wu = new LList<String>();
-/*
+
     System.out.println(wu);
     wu.add("RZA");
     wu.add("GZA");
@@ -26,7 +26,6 @@ public class V6Driver
     for( String s : wu ) {
       System.out.println( s + " raps for the Wu");
     }
-    */
   }//end main()
 
 }//end class

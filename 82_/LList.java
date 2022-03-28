@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 
-public class LList<T> implements List<T> //Q: Why no "implements Iterable" ? // List is already implementing iterable
+public class LList<T> implements List<T> //Q: Why no "implements Iterable" ?
 {
   // Your List.java must be in same dir to supersede
   // built-in Java List interface
@@ -152,10 +152,10 @@ public class LList<T> implements List<T> //Q: Why no "implements Iterable" ? // 
 
 
   //return an Iterator over this list
-  public Iterator<T> tempname()/* YOUR CODE HERE */
+  public Iterator<T> iterator()
   {
-    /* YOUR CODE HERE */
-    return this.iterator;
+    Iterator<T> itr = new MyIterator();
+    return itr;
   }
 
   //--------------------------------------------------------
@@ -255,8 +255,8 @@ public class LList<T> implements List<T> //Q: Why no "implements Iterable" ? // 
     //constructor
     public MyIterator()
     {
-      /* YOUR CODE HERE */
-
+      _dummy = null;
+      _okToRemove = false;
     }
 
     //-----------------------------------------------------------
@@ -264,14 +264,23 @@ public class LList<T> implements List<T> //Q: Why no "implements Iterable" ? // 
     //return true if iteration has more elements.
     public boolean hasNext()
     {
-      return (_dummy.getNext() != null);
+      if (_dummy == null) {
+        return _head != null;
+      }
+      return _dummy.getNext() != null;
     }
 
 
     //return next element in this iteration
     public T next()
     {
-      return _dummy.getNext();
+      _okToRemove = true;
+      if (_dummy == null) {
+        _dummy = _head;
+      } else {
+        _dummy = _dummy.getNext();
+      }
+      return _dummy.getCargo();
     }
 
 
@@ -280,7 +289,10 @@ public class LList<T> implements List<T> //Q: Why no "implements Iterable" ? // 
     //               (...so that hasNext() will not crash)
     public void remove()
     {
-            /* YOUR CODE HERE */
+      if (_okToRemove) {
+        removeFirst();
+        _okToRemove = false;
+      }
     }
     //--------------^  Iterator interface methods  ^-------------
     //-----------------------------------------------------------
