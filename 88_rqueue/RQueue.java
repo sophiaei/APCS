@@ -15,6 +15,8 @@ The issue lies in how sample works. There's a couple of approaches
   runtime and feels unclean.
 - changing front ? but then we lose too much data. This might be remedied by
   adding a _truefront variable? but not very nice.
+
+Ours is not working! Please standby 
 */
 
 

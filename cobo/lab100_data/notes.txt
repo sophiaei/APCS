@@ -1,14 +1,51 @@
-Team Phantom Tollbooth :: Clyde Sinclair, Fierce Dragon
+Team Jewish Students Association - Jacob Kirmayer, Sophia Eiden, Ameer Alnasser
 APCS
-LAB08 --
+LAB08 -- data
 2022-04-05
-time spent: <elapsed time in hours, rounded to nearest tenth>
+time spent: 0.75 hrs
 
 
 DISCO
 
 
 QCC
+
+
+Act. 1
+1. Instagram, Facebook
+2. clicking habits (for ad tracking), location(also for ads!)
+3. delimited means having limits; this helps data processing by being able to separate values in a readable manner
+4. Column name? accessor methods?? This is a vague question.
+5. Law, psychology
+6. How does the application of the law interfere with theoretical ideals of justice?
+   In what ways do cognitive biases affect our understanding of a situation?
+7. For the second question, we found Psychological and Behavioral Effects of Bias- and Non-Bias-Motivated Assault in Boston, Massachusetts, 1992-1997 and MCPD Bias Incidents
+8. The larger the data set, the more precise the conclusions we can draw from them.
+9. For better or worse, more data tracking will create a more tailored online experience that can more quickly increase customer satisfaction - whether or not this hyper-specificity is beneficial or not stands to be debated.
+10.It was from a government database, so we can assume it was collected systematically from the sources.
+11.Not really. It is not good to cede our right to privacy to private corporations.
+
+Act. 2
+1. Brand or type
+2. ---
+3. Brand / Type
+4. 15? however many columns there are
+5. ints, floats, strings
+6,7. ---
+8. What is the highest rated cereal brand?
+9. Which is the most nutritionally dense cereal?
+10. We could add a nutritional value instance variable.
+
+Act. 3
+1. The temperature at Atlanta, Hartsfield - Jackson Atlanta International Airport, GA is 72.0F
+2. KABQ, The temperature at Albuquerque, Albuquerque International Airport, NM is 62.0F
+3. ---
+4. 48 objects
+5. By latitude or longitude
+6. The most south station is NSTU: Pago Pago, AS, Samoa
+7. What is the most northern weather station?
+8. Just switch south to north and flip the inequality. :)
+
 
 
 <TNPG>'s CSV FLOW:
