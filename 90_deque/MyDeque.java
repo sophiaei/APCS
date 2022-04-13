@@ -4,17 +4,19 @@
 // 2022-04-13
 // time spent: 0.7 hrs
 
-public class MyDeque<Card> implements Deque<Card> 
-{
-    private LLQueue<Card> _deque;
+import java.util.LinkedList;
 
-    public MyDeque() 
+public class MyDeque<Card> implements Deque<Card>
+{
+    private LinkedList<Card> _deque;
+
+    public MyDeque()
     {
-        _deque = new LLQueue<Card>();
+        _deque = new LinkedList<Card>();
     }
 
     // Inserts the specified element at the front of this deque
-    public void addFirst(Card x) 
+    public void addFirst(Card x)
     {
         _deque.addFirst(x);
     }
@@ -34,7 +36,7 @@ public class MyDeque<Card> implements Deque<Card>
 
     // Retrieves, but does not remove, the last element of this deque
     // Returns null if this deque is empty
-    public Card peekLast() 
+    public Card peekLast()
     {
         return _deque.peekLast();
     }
@@ -42,7 +44,7 @@ public class MyDeque<Card> implements Deque<Card>
     // Retrieves and removes the first element of this deque
     public Card removeFirst()
     {
-        return _deque.removeFirst()
+        return _deque.removeFirst();
     }
 
     // Retrieves and removes the last element of this deque
@@ -62,5 +64,4 @@ public class MyDeque<Card> implements Deque<Card>
     {
         return _deque.size();
     }
-
 }

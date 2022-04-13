@@ -18,5 +18,6 @@ time spent: 0.7 hrs
 - isEmpty()
     - Same as isEmpty()
 - addFirst()
+  - 
 - removeLast()
 - peekLast()
