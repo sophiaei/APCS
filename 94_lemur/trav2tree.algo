@@ -1,0 +1,88 @@
+National Security Agency: Nora Miller, Sophia Eiden, Ameer Alnasser
+APCS pd0
+HW94 -- reverse engineering
+2022-05-06f
+time spent:  hrs
+
+
+DISCO
+------------------------------------------------
+* Single children can't be left or right, or at least it's not useful to make them left or right, because
+  in all cases they can be either.
+================================================
+
+
+QCC
+------------------------------------------------
+* Is there an easy way of the thinking about the combinatorics of creating all possible trees from a given traversal?
+* Were the first three questions meant to assume that there weren't any constraints of universally processing the left
+  subtree first?
+================================================
+
+
+HOW KEEN ARE YOUR POWERS OF OBSERVATION?
+------------------------------------------------
+Q: For a given binary tree, how many unique pre-order traversals are there?
+A: For a binary tree with n nodes with 2 children, there are 2^n unique pre-order traversals
+(but unless you're following some rule universally processing the left or right subtree first,
+you won't be able to easily figure out the tree based on the traversal)
+
+Q: For a given binary tree, how many unique in-order traversals are there?
+A: Same as above, with the same constraints - 2^n where n is the number of nodes with two children
+
+Q: For a given binary tree, how many unique post-order traversals are there?
+A: Also same as above, with the same constraints - 2^n where n is the number of nodes with two children
+
+Q: For a given traversal, how many unique trees could have produced it?
+A: Assuming this question isn't meant to be a long combinatorics problem, for
+
+Q: Given a pre-order traversal, what can you infer about its tree?
+A: A very limited set of information - just the root node and the total number of nodes
+
+Q: Given a post-order traversal, what can you infer about its tree?
+A: Same as above - the root node and the total number of nodes
+
+Q: What does "1-to-1" mean?
+A: For each point in the domain, there is exactly one point in range that corresponds to it.
+
+Q: What does "onto" mean?
+A: Every point in a given set is in the range of a given function (ex. x^3 is onto the set of integers
+- every integer is the cube of another integer)
+
+================================================
+
+
+ALGO for reconstructing a tree with an in-order traversal:
+------------------------------------------------
+givens:
+an in-order traversal
+a pre/post-order traversal
+where both always process the left subtree before the right
+
+procedure:
+
+1. Identify root in pre/post-order traversal (it will be at one end) and place on diagram
+2. Find root in in-order traversal
+3. -> you know which nodes are in the left and right subtrees
+4. Repeat from step 1 for each subtree, until there are no more subtrees
+
+================================================
+
+ALGO for reconstructing a tree without an in-order traversal:
+------------------------------------------------
+givens:
+a pre-order traversal
+a post-order traversal
+where both always process the left subtree before the right
+
+procedure:
+
+1. If you don't already know the root, find the node that is at the end of the post-order traversal and at the beginning of the pre-order traversal.
+   This will be your root. Place it on the diagram.
+2. Of the remaining nodes, is there still a node that appears at the beginning of the pre-order and at the end
+   of the post-order traversal?
+3. If yes, it is the single child of the root. Apply this algorithm the subtree with it as a root.
+4. If no, then the node next to the root in the pre-order traversal will be the root of the left subtree, and
+   the node next to the root in the post-order traversal will be the root of the right subtree. Apply this algorithm to each subtree
+
+================================================
