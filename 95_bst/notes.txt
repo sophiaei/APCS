@@ -1,0 +1,15 @@
+National Security Agency: Nora Miller, Sophia Eiden, Ameer Alnasser
+APCS pd6
+HW94 -- reverse engineering
+2022-05-09m
+time spent: 1 hrs
+
+DISCO:
+It is very easy to fall into the cognitive dissonance hole, i was hellbent on insert beign wrong wehen preOrderTrav was
+QCC:
+we tried to use a while loop for the preOrderTrav and it didnt get working, is therre any way to do so?
+where are trees useful as data structures, rather than as trace diagrams?
+
+1. a perfect binary tree has 2^level-1 nodes
+2. at each level, a perfect binary tree has 2^(height) nodes
+3. height of a complete binary tree w n nodes is log(n+1)
