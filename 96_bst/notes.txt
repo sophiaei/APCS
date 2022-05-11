@@ -1,0 +1,22 @@
+// JIMIN :: Ryan Lau, Melody Lew, Paul Serbanescu (ft. Sophia Eiden)
+// APCS pd6
+// HW96 -- BSTs is the Perfect Place for Shade
+// 2022-05-10t
+// time spent: 1.0  hrs
+
+DISCO
+search()
+- tree traversal with included target checks embedded
+
+height()
+ - returns the longest chain of parent-child relationships
+ - (+1 accounts for the root itself)
+
+numLeaves()
+- kinda like a traversal except just notes each "dead end"
+
+- All use a basic recursive technique, with similar applications
+
+QCC
+- considering the usual methods for a data structure, how would one delete an element? would you ever need to anyways?
+- how does the algo treat 2 equal integers?
