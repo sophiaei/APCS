@@ -1,0 +1,12 @@
+National Security Agency: Nora Miller, Sophia Eiden, Ameer Alnasser
+APCS pd6
+HW99 -- Codify
+2022-05-14s
+time spent: 1 hrs
+
+DISCO
+* when making the peekMin(), we accidentally coded a peekMax() method, which in turn helped us with our algorithm
+
+QCC
+* is there a way to do this without storing a max instance var?
+* why is there an overloaded remove() methiod for arrayLists?
