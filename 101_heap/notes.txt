@@ -1,0 +1,12 @@
+National Security Agency: Nora Miller, Sophia Eiden, Ameer Alnasser
+APCS pd6
+HW101 -- Heap o' Trouble
+2022-05-16m
+time spent: 1 hrs
+
+DISCO
+minheap: smallest on top
+maxheap: biggest on top
+
+QCC:
+Use case?

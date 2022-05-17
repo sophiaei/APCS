@@ -1,0 +1,15 @@
+National Security Agency: Nora Miller, Sophia Eiden, Ameer Alnasser
+APCS pd6
+HW101 -- Heap o' Trouble
+2022-05-16m
+time spent: 1 hrs
+
+Minheap: smallest on top. adding value x
+Assuming that all children of minheap are also minheaps:
+if x> all values
+we should go find the first empty child hole and place it there
+if some values < x < some values,
+starts at the "leaves", then stops when it is smaller than all eelments under it
+if in between,
+if x < all values,
+replace root with x, take root and do the algo for some values <x < some vals

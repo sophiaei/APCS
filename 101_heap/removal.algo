@@ -1,0 +1,14 @@
+National Security Agency: Nora Miller, Sophia Eiden, Ameer Alnasser
+APCS pd6
+HW101 -- Heap o' Trouble
+2022-05-16m
+time spent: 1 hrs
+
+Minheap: smallest on top. removing value x
+Assuming that all children of minheap are also minheaps:
+if x>all values
+set that heap to null
+if val<x<val
+take the smallest value under x and replace it with x
+if x < all values,
+x is the root, take the smallwst value under x and replace it, then adjust accordingly
