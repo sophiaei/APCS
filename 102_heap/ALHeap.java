@@ -10,7 +10,7 @@
  * Implements a min heap using an ArrayList as underlying container
  */
 
-//import java.util.ArrayList;
+import java.util.ArrayList;
 
 public class ALHeap
 {
@@ -46,7 +46,7 @@ public class ALHeap
    */
   public boolean isEmpty()
   {
-    return _heap.size() == 0;
+    return _heap.isEmpty();
   }//O(?)
 
 
@@ -57,7 +57,7 @@ public class ALHeap
    */
   public Integer peekMin()
   {
-    return _heap.getIndex(0);
+    return _heap.get(0);
   }//O(?)
 
 
@@ -80,7 +80,19 @@ public class ALHeap
    */
   public void add( Integer addVal )
   {
-    _heap.add(addVal);
+    _heap.add(addVal); // add at first open index
+    if (isEmpty()){return;}
+
+    // initialize index pointers
+    int current = _heap.size() - 1;
+    int p = (current -1 )/2;
+
+    // while the added one is less than the parent, move the value up
+    while (addVal < _heap.get(p)){
+      swap(p, current);
+      current = p;
+      p = (current - 1) / 2;
+    }
   }//O(?)
 
 
@@ -101,6 +113,24 @@ public class ALHeap
    */
   public Integer removeMin()
   {
+    if (isEmpty()){return null;}
+
+    // save the minimum val
+    int removed = _heap.get(0);
+    // move the "last" (latest added value) to the top
+    _heap.set(0, _heap.get(_heap.size()-1));
+    _heap.remove(_heap.size()-1);
+    //initialize index pointers
+    int root = 0;
+    int minChild;
+    //swap the new "root" to its correct place
+    while ((((2*root + 1) < _heap.size()) && _heap.get(root) > _heap.get(2*root + 1)) ||
+            (((2*root + 2) < _heap.size()) &&_heap.get(root) > _heap.get(2*root + 2))) {
+      minChild = minChildPos(root);
+      swap(root, minChild);
+      root = minChild;
+    }
+    return removed;
   }//O(?)
 
 
@@ -112,6 +142,26 @@ public class ALHeap
    */
   private int minChildPos( int pos )
   {
+    //index pointers
+    int left = 2 * pos + 1;
+    int right = 2 * pos + 2;
+
+    // out of bounds?
+    if (left >=_heap.size()) {
+      if (right >= _heap.size()) {
+        return -1;
+      }
+      return right;
+    }
+    if (right >= _heap.size()) {
+      return left;
+    }
+
+    // comparison
+    if (_heap.get(left) > _heap.get(right)) {
+      return right;
+    }
+    return left;
   }//O(?)
 
 
@@ -131,15 +181,11 @@ public class ALHeap
   }
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  private int idxOfParent(int idx){
-   // (idx - 1)/2
-  }
-
 
   //main method for testing
   public static void main( String[] args )
   {
-    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
       ALHeap pile = new ALHeap();
 
       pile.add(2);
@@ -185,6 +231,7 @@ public class ALHeap
       System.out.println(pile);
       System.out.println("removing " + pile.removeMin() + "...");
       System.out.println(pile);
+      /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   }//end main()
 
