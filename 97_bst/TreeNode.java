@@ -1,3 +1,8 @@
+// National Security Agency: Nora Miller, Ameer Alnasser, SOphia Eiden
+// APCS pd6
+// HW97 -- reverse engineering
+// 2022-05-11w
+// time spent: 2 hrs
 /**
  * class TreeNode
  * SKELETON
@@ -20,7 +25,7 @@ public class TreeNode
    */
   TreeNode( int initValue )
   {
-    _cargo = initValue;
+    _cargo=initValue;
   }
 
 
@@ -30,9 +35,9 @@ public class TreeNode
    */
   TreeNode( int initValue, TreeNode initLeft, TreeNode initRight )
   {
-    this(initValue);
-    _lt = initLeft;
-    _rt = initRight;
+    _cargo=initValue;
+    _lt=initLeft;
+    _rt=initRight;
   }
 
 
@@ -68,7 +73,7 @@ public class TreeNode
    */
   void setLeft( TreeNode theNewLeft )
   {
-    _lt = theNewLeft;
+    _lt=theNewLeft;
   }
 
 
@@ -77,7 +82,7 @@ public class TreeNode
    */
   void setRight( TreeNode theNewRight )
   {
-    _rt = theNewRight;
+    _rt=theNewRight;
   }
 
 
@@ -86,7 +91,7 @@ public class TreeNode
    */
   void setValue( int theNewValue )
   {
-    _cargo = theNewValue;
+    _cargo=theNewValue;
   }
 
 }//end class

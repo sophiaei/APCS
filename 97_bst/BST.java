@@ -1,3 +1,9 @@
+// National Security Agency: Nora Miller, Ameer Alnasser, SOphia Eiden
+// APCS pd6
+// HW97 -- reverse engineering
+// 2022-05-11w
+// time spent: 2 hrs
+
 /**
  * class BST
  * v2:partial

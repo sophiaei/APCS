@@ -6,6 +6,8 @@ time spent: 1 hrs
 
 DISCO
 --> 3 (4ish) cases, 2 base, one recursing
-
+--> The ToString skips the instances of null which refer to non-nodes
+--> the 0 and 1 child cases are easiest
 
 QCC
+is there a more efficient remove mehthod?
